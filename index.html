@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	方案：<input id="fangan" type="number" max="12" min="1" step="1" value="2"><br>
+	位置：<input id="weizhi" type="number" max="14" min="0" step="1" value="10">
+	<button type="button" onclick="set()">确定</button>
+
+	<script type="text/javascript">
+    try{ 
+        document.createElement("canvas").getContext("2d"); 
+    }catch(e){ 
+        document.getElementById("support").innerHTML = 
+        "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>"; 
+    }
+ 	</script>
+
+	<!-- <iframe src="demo.svg" width="100%" height="800"></iframe> -->
+
+
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="100%" height="800" version="1.1"
+	xmlns="http://www.w3.org/2000/svg">
+
+
+
+<circle id="o3" cx="400" cy="300" r="5" stroke="black"
+	stroke-width="1" fill="red"/>
+
+<circle id="o2" cx="600" cy="300" r="5" stroke="black"
+	stroke-width="1" fill="red"/>
+
+<circle id="ol1" cx="600" cy="300" r="80" stroke="black"
+	stroke-width="1" fill="transparent" stroke-opacity="0.5"/>
+
+
+
+<line id="r3" x1="400" y1="300" x2="600" y2="380"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<line id="l3" x1="400" y1="300" x2="220" y2="228"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<rect id="rA" x="585" y="370" width="30" height="20" fill="white" stroke="black"
+	transform="rotate(45,600 380)"/>
+
+<circle id="oA" cx="600" cy="380" r="5" stroke="black"
+	stroke-width="1" fill="red"/>
+
+<line id="l1" x1="600" y1="300" x2="600" y2="380"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<line id="l6" x1="200" y1="100" x2="200" y2="380"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<circle id="oB" cx="220" cy="228" r="5" stroke="black"
+	stroke-width="1" fill="red"/>
+
+<rect id="rC" x="185" y="90" width="30" height="20" fill="white" stroke="black"
+	transform="rotate(90,200 100)"/>
+
+<line id="l4" x1="220" y1="228" x2="200" y2="100"
+	style="stroke:rgb(99,99,99);stroke-width:2" />
+
+<circle id="oC" cx="200" cy="100" r="5" stroke="black"
+	stroke-width="1" fill="red"/>
+
+<line id="la" x1="200" y1="100" x2="100" y2="100"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+</svg>
+
+
+
+	
+	<script>
+
+		var K_a = new Array(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);
+		var H_a = new Array(100,150,160,140,110,135,120,110,120,130,200,220);
+		var l6_a = new Array(150,185,200,180,170,140,160,170,160,150,210,230);
+		var Xi_a = new Array(1,0.8,1.0,0.8,1.0,1.1,1,0.9,1.1,0.85,0.9,1.0);
+		var n1_a = new Array(120,120,140,150,130,140,130,130,140,130,300,400);
+		var F_a = new Array(1200,1000,1200,1400,1300,1200,1300,1100,1300,1400,2000,3000);
+		var G3_a = new Array(160,200,170,160,190,200,190,170,150,180,160,165);
+		var G5_a = new Array(320,360,330,400,380,400,410,330,320,340,400,500);
+		var a_a = new Array(50,65,45,55,50,70,50,70,55,60,50,45);
+		var b_a = new Array(50,70,70,60,50,60,60,60,55,65,60,55);
+		var c_a = new Array(120,160,120,110,130,140,100,130,140,150,130,120);
+		var d_a = new Array(125,130,135,120,130,140,110,140,150,150,140,130);
+		var delta_a = new Array(0.04,0.03,0.02,0.05,0.06,0.05,0.04,0.05,0.03,0.06,0.03,0.02);
+		var JS3_a = new Array(0.14,0.3,0.4,0.3,0.25,0.5,0.45,0.2,0.35,0.25,0.4,0.5);
+		// var svg = document.getElementsByTagName('iframe')[0].getSVGDocument();
+		// console.log(svg);
+		var K, H, l6, Xi, n1, F, G3, G5, a, b, c, d, delta, JS3;
+		var Phi0, Phi0_h, Phi1, Phi1_h, Phi3, Phi3_h, Phi4, Phi4_h; //φ
+		var Psi, Psi_h; //Ψ
+		var l1, l3, l4, h, r3, S, x3, y3, theta3_h;
+		var r3_d, r3_dd, x3_dd, y3_dd, Vc, x3_d, y3_d;
+		var Omega1, Omega3, Omega4, Alpha3, Alpha4, ac;
+		var g = 9.8,PI = 3.1416;
+		var Fix3, Fiy3, Mi3, Fi5, R34, R45, R65, h65, R12, X63, Y63, R63, Mb, R61, Mb_p;
+
+		var scale = 1000;
+
+		var $l1 = document.getElementById("l1");
+		var $l6 = document.getElementById("l6");
+		var $l3 = document.getElementById("l3");
+		var $l4 = document.getElementById("l4");
+		var $r3 = document.getElementById("r3");
+		var $o2 = document.getElementById("o2");
+		var $o3 = document.getElementById("o3");
+		var $ol1 = document.getElementById("ol1");
+		var $oA = document.getElementById("oA");
+		var $oB = document.getElementById("oB");
+		var $oC = document.getElementById("oC");
+		var $la = document.getElementById("la");
+		var $oC = document.getElementById("oC");
+
+		function set(){
+			var fangan = parseInt(document.getElementById("fangan").value) - 1;
+			var weizhi = parseInt(document.getElementById("weizhi").value);
+			K = K_a[fangan];
+			H = H_a[fangan] / 1000 * scale;
+			l6 = l6_a[fangan] / 1000 * scale;
+			Xi = Xi_a[fangan];
+			n1 = n1_a[fangan];
+			F = F_a[fangan];
+			G3 = G3_a[fangan];
+			G5 = G5_a[fangan];
+			a = a_a[fangan] / 1000 * scale;
+			b = b_a[fangan] / 1000 * scale;
+			c = c_a[fangan] / 1000 * scale;
+			d = d_a[fangan] / 1000 * scale;
+			delta = delta_a[fangan];
+			JS3 = JS3_a[fangan];
+
+			Omega1 = n1 * PI / 60;
+
+			Psi = 180 * (K - 1) / (K + 1);
+			Phi0 = 270 - Psi / 2;
+			if (weizhi <= 11 && weizhi >= 0) {
+				Phi1 = Phi0 + 30 * weizhi;
+			}
+			else if (weizhi == 14) {
+				Phi1 = 90 + Psi / 2;
+			}
+			else {
+				var name = prompt("请输入φ1(角度)：", "");
+			}
+			Phi0_h = Phi0 * PI / 180;
+			Phi1_h = Phi1 * PI / 180;
+			Psi_h = Psi * PI / 180;
+
+			l1 = l6 * Math.sin(Psi_h / 2);
+			l3 = H / (2 * Math.sin(Psi_h / 2));
+			l4 = Xi * l3;
+			h = l3 * (1 + Math.cos(Psi_h / 2)) / 2;
+				
+			console.log(l1);
+			console.log(l3);
+			console.log(l4);
+			console.log(h);
+
+			var o3_x = parseInt($o3.getAttribute("cx"));
+			var o3_y = parseInt($o3.getAttribute("cy"));
+			var o2_x = o3_x + l6;
+			var o2_y = o3_y;
+			
+			$o2.setAttribute("cx",o2_x);
+			$o2.setAttribute("cy",o2_y);
+
+			$ol1.setAttribute("cx",o2_x);
+			$ol1.setAttribute("cy",o2_y);
+			$ol1.setAttribute("r",l1);
+			
+			var oA_x = Math.cos(Phi1_h) * l1 + o2_x;
+			var oA_y = Math.sin(Phi1_h) * l1 + o2_y;
+			
+			$oA.setAttribute("cx",oA_x);
+			$oA.setAttribute("cy",oA_y);
+
+			$l1.setAttribute("x1",o2_x);
+			$l1.setAttribute("y1",o2_y);
+			$l1.setAttribute("x2",oA_x);
+			$l1.setAttribute("y2",oA_y);
+
+			$r3.setAttribute("x2",oA_x);
+			$r3.setAttribute("y2",oA_y);
+
+			var l3_k = (o3_y - oA_y) / (o3_x - oA_x);
+			var theta = Math.atan(l3_k);
+			var	oB_x = o3_x - l3 * Math.cos(theta);
+			var	oB_y = o3_y - l3 * Math.sin(theta);
+
+			$oB.setAttribute("cx",oB_x);
+			$oB.setAttribute("cy",oB_y);
+
+			$l3.setAttribute("x1",o3_x);
+			$l3.setAttribute("y1",o3_y);
+			$l3.setAttribute("x2",oB_x);
+			$l3.setAttribute("y2",oB_y);
+
+			var oC_x = o3_x - h;
+			var oC_y = oB_y - Math.sqrt(l4*l4-Math.pow(oB_x - oC_x,2));
+
+			$l4.setAttribute("x1",oB_x);
+			$l4.setAttribute("y1",oB_y);
+			$l4.setAttribute("x2",oC_x);
+			$l4.setAttribute("y2",oC_y);
+
+
+			$oC.setAttribute("cx",oC_x);
+			$oC.setAttribute("cy",oC_y);
+
+			$l6.setAttribute("x1",oC_x);
+			$l6.setAttribute("x2",oC_x);
+
+			$la.setAttribute("x1",oC_x);
+			$la.setAttribute("y1",oC_y);
+			$la.setAttribute("x2",oC_x - c);
+			$la.setAttribute("y2",oC_y);
+
+
+		}
+
+	</script>
+</body>
+</html>
