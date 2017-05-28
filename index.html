@@ -31,7 +31,7 @@
 
 
 
-<circle id="o3" cx="400" cy="300" r="5" stroke="black"
+<circle id="o3" cx="400" cy="400" r="5" stroke="black"
 	stroke-width="1" fill="red"/>
 
 <circle id="o2" cx="600" cy="300" r="5" stroke="black"
@@ -43,6 +43,9 @@
 
 
 <line id="r3" x1="400" y1="300" x2="600" y2="380"
+	style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<line id="r3_e" x1="600" y1="380" x2="700" y2="420"
 	style="stroke:rgb(99,99,99);stroke-width:2"/>
 
 <line id="l3" x1="400" y1="300" x2="220" y2="228"
@@ -57,14 +60,13 @@
 <line id="l1" x1="600" y1="300" x2="600" y2="380"
 	style="stroke:rgb(99,99,99);stroke-width:2"/>
 
-<line id="l6" x1="200" y1="100" x2="200" y2="380"
+<line id="l6" x1="200" y1="20" x2="200" y2="500"
 	style="stroke:rgb(99,99,99);stroke-width:2"/>
 
 <circle id="oB" cx="220" cy="228" r="5" stroke="black"
 	stroke-width="1" fill="red"/>
 
-<rect id="rC" x="185" y="90" width="30" height="20" fill="white" stroke="black"
-	transform="rotate(90,200 100)"/>
+<rect id="rC" x="185" y="90" width="20" height="30" fill="white" stroke="black"/>
 
 <line id="l4" x1="220" y1="228" x2="200" y2="100"
 	style="stroke:rgb(99,99,99);stroke-width:2" />
@@ -76,10 +78,6 @@
 	style="stroke:rgb(99,99,99);stroke-width:2"/>
 
 </svg>
-
-
-
-	
 	<script>
 
 		var K_a = new Array(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);
@@ -107,7 +105,9 @@
 		var g = 9.8,PI = 3.1416;
 		var Fix3, Fiy3, Mi3, Fi5, R34, R45, R65, h65, R12, X63, Y63, R63, Mb, R61, Mb_p;
 
+		var o3_x, o3_y, o2_x, o2_y;
 		var scale = 1000;
+		var fangan,weizhi;
 
 		var $l1 = document.getElementById("l1");
 		var $l6 = document.getElementById("l6");
@@ -121,11 +121,16 @@
 		var $oB = document.getElementById("oB");
 		var $oC = document.getElementById("oC");
 		var $la = document.getElementById("la");
-		var $oC = document.getElementById("oC");
+		var $rC = document.getElementById("rC");
+		var $rA = document.getElementById("rA");
+		var $r3_e = document.getElementById("r3_e");
 
-		function set(){
-			var fangan = parseInt(document.getElementById("fangan").value) - 1;
-			var weizhi = parseInt(document.getElementById("weizhi").value);
+		function change_scale(s) {
+			scale = s;
+			change_fangan(fangan);
+		}
+
+		function change_fangan(){
 			K = K_a[fangan];
 			H = H_a[fangan] / 1000 * scale;
 			l6 = l6_a[fangan] / 1000 * scale;
@@ -145,6 +150,52 @@
 
 			Psi = 180 * (K - 1) / (K + 1);
 			Phi0 = 270 - Psi / 2;
+			
+			Phi0_h = Phi0 * PI / 180;
+			
+			Psi_h = Psi * PI / 180;
+			l1 = l6 * Math.sin(Psi_h / 2);
+			l3 = H / (2 * Math.sin(Psi_h / 2));
+			l4 = Xi * l3;
+			h = l3 * (1 + Math.cos(Psi_h / 2)) / 2;
+
+			o3_x = parseInt($o3.getAttribute("cx"));
+			o3_y = parseInt($o3.getAttribute("cy"));
+			o2_x = o3_x + l6;
+			o2_y = o3_y;
+			
+			$ol1.setAttribute("cx",o2_x);
+			$ol1.setAttribute("cy",o2_y);
+			$ol1.setAttribute("r",l1);
+
+			$o2.setAttribute("cx",o2_x);
+			$o2.setAttribute("cy",o2_y);
+
+			$l6.setAttribute("x1",o3_x - h);
+			$l6.setAttribute("x2",o3_x - h);
+
+			$oC.setAttribute("cx",o3_x - h);
+
+			$la.setAttribute("x1",o3_x - h);
+			$la.setAttribute("x2",o3_x - h - c);
+
+			$l4.setAttribute("x2",o3_x - h);
+
+			$l3.setAttribute("x1",o3_x);
+			$l3.setAttribute("y1",o3_y);
+
+			$l1.setAttribute("x1",o2_x);
+			$l1.setAttribute("y1",o2_y);
+
+			$rC.setAttribute("x",o3_x - h - 10);
+
+			$r3.setAttribute("x1",o3_x);
+			$r3.setAttribute("y1",o3_y);
+
+			change_weizhi();
+		}
+
+		function change_weizhi() {
 			if (weizhi <= 11 && weizhi >= 0) {
 				Phi1 = Phi0 + 30 * weizhi;
 			}
@@ -152,42 +203,25 @@
 				Phi1 = 90 + Psi / 2;
 			}
 			else {
-				var name = prompt("请输入φ1(角度)：", "");
+				Phi1 = prompt("请输入φ1(角度)：", "");
 			}
-			Phi0_h = Phi0 * PI / 180;
+			
+			change_jiaodu(Phi1);
+		}
+
+		function change_jiaodu(j){
+			Phi1 = j;
 			Phi1_h = Phi1 * PI / 180;
-			Psi_h = Psi * PI / 180;
-
-			l1 = l6 * Math.sin(Psi_h / 2);
-			l3 = H / (2 * Math.sin(Psi_h / 2));
-			l4 = Xi * l3;
-			h = l3 * (1 + Math.cos(Psi_h / 2)) / 2;
-				
-			console.log(l1);
-			console.log(l3);
-			console.log(l4);
-			console.log(h);
-
-			var o3_x = parseInt($o3.getAttribute("cx"));
-			var o3_y = parseInt($o3.getAttribute("cy"));
-			var o2_x = o3_x + l6;
-			var o2_y = o3_y;
 			
-			$o2.setAttribute("cx",o2_x);
-			$o2.setAttribute("cy",o2_y);
-
-			$ol1.setAttribute("cx",o2_x);
-			$ol1.setAttribute("cy",o2_y);
-			$ol1.setAttribute("r",l1);
-			
-			var oA_x = Math.cos(Phi1_h) * l1 + o2_x;
-			var oA_y = Math.sin(Phi1_h) * l1 + o2_y;
+			r3 = Math.pow(l1*l1 + l6*l6 + 2 * l1*l6*Math.cos(Phi1_h), 0.5);
+			// console.log(r3);
+			var oA_x = o2_x + Math.cos(Phi1_h) * l1;
+			var oA_y = o2_y - Math.sin(Phi1_h) * l1;
 			
 			$oA.setAttribute("cx",oA_x);
 			$oA.setAttribute("cy",oA_y);
 
-			$l1.setAttribute("x1",o2_x);
-			$l1.setAttribute("y1",o2_y);
+			
 			$l1.setAttribute("x2",oA_x);
 			$l1.setAttribute("y2",oA_y);
 
@@ -202,8 +236,6 @@
 			$oB.setAttribute("cx",oB_x);
 			$oB.setAttribute("cy",oB_y);
 
-			$l3.setAttribute("x1",o3_x);
-			$l3.setAttribute("y1",o3_y);
 			$l3.setAttribute("x2",oB_x);
 			$l3.setAttribute("y2",oB_y);
 
@@ -212,22 +244,35 @@
 
 			$l4.setAttribute("x1",oB_x);
 			$l4.setAttribute("y1",oB_y);
-			$l4.setAttribute("x2",oC_x);
 			$l4.setAttribute("y2",oC_y);
 
-
-			$oC.setAttribute("cx",oC_x);
 			$oC.setAttribute("cy",oC_y);
-
-			$l6.setAttribute("x1",oC_x);
-			$l6.setAttribute("x2",oC_x);
-
-			$la.setAttribute("x1",oC_x);
+			
 			$la.setAttribute("y1",oC_y);
-			$la.setAttribute("x2",oC_x - c);
 			$la.setAttribute("y2",oC_y);
 
+			$rC.setAttribute("y",oC_y - 15);
+			$rA.setAttribute("x",oA_x - 15);
+			$rA.setAttribute("y",oA_y - 10);
+			$rA.setAttribute("transform","rotate("+(l3_k*180/PI)+","+oA_x+" "+oA_y+")");
 
+			$r3_e.setAttribute("x1",oA_x);
+			$r3_e.setAttribute("y1",oA_y);
+			$r3_e.setAttribute("x2",oA_x+(350-r3)*Math.cos(theta));
+			$r3_e.setAttribute("y2",oA_y+(350-r3)*Math.sin(theta));
+		}
+		var interval;
+		function set(){
+			fangan = parseInt(document.getElementById("fangan").value) - 1;
+			weizhi = parseInt(document.getElementById("weizhi").value);
+			
+			change_fangan();
+			var j = 0;
+			clearInterval(interval);
+			interval = setInterval(function() {
+				change_jiaodu(j);
+				j = j + 1;
+			},30);
 		}
 
 	</script>
