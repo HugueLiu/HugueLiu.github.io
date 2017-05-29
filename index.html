@@ -9,6 +9,7 @@
 	方案：<input id="fangan" type="number" max="12" min="1" step="1" value="2"><br>
 	位置：<input id="weizhi" type="number" max="14" min="0" step="1" value="10">
 	<button type="button" onclick="set()">确定</button>
+	<button id="ani" type="button" onclick="animates()">开始动画</button>
 
 	<script type="text/javascript">
     try{ 
@@ -63,6 +64,18 @@
 <line id="l6" x1="200" y1="20" x2="200" y2="500"
 	style="stroke:rgb(99,99,99);stroke-width:2"/>
 
+<line id="jxup" x1="200" y1="20" x2="300" y2="20"
+	style="stroke:red;stroke-width:1"/>
+
+<line id="jxdw" x1="200" y1="20" x2="300" y2="20"
+	style="stroke:red;stroke-width:1"/>
+
+<line id="qxup" x1="200" y1="20" x2="300" y2="20"
+	style="stroke:blue;stroke-width:1"/>
+
+<line id="qxdw" x1="200" y1="20" x2="300" y2="20"
+	style="stroke:blue;stroke-width:1"/>
+
 <circle id="oB" cx="220" cy="228" r="5" stroke="black"
 	stroke-width="1" fill="red"/>
 
@@ -106,6 +119,8 @@
 		var Fix3, Fiy3, Mi3, Fi5, R34, R45, R65, h65, R12, X63, Y63, R63, Mb, R61, Mb_p;
 
 		var o3_x, o3_y, o2_x, o2_y;
+		var jxup,jxdw,qxup,qxdw;
+
 		var scale = 1000;
 		var fangan,weizhi;
 
@@ -192,6 +207,7 @@
 			$r3.setAttribute("x1",o3_x);
 			$r3.setAttribute("y1",o3_y);
 
+			jxwz();
 			change_weizhi();
 		}
 
@@ -261,18 +277,80 @@
 			$r3_e.setAttribute("x2",oA_x+(350-r3)*Math.cos(theta));
 			$r3_e.setAttribute("y2",oA_y+(350-r3)*Math.sin(theta));
 		}
+
+		function jxwz() {
+			//上极限位置
+			var Phi1_h = Phi0 * PI / 180;
+			
+			var oA_x = o2_x + Math.cos(Phi1_h) * l1;
+			var oA_y = o2_y - Math.sin(Phi1_h) * l1;
+			
+			var l3_k = (o3_y - oA_y) / (o3_x - oA_x);
+			var theta = Math.atan(l3_k);
+			var	oB_x = o3_x - l3 * Math.cos(theta);
+			var	oB_y = o3_y - l3 * Math.sin(theta);
+
+			var oC_x = o3_x - h;
+			var oC_y = oB_y - Math.sqrt(l4*l4-Math.pow(oB_x - oC_x,2));
+
+			jxup = oC_y;
+			//下极限位置
+			jxdw = jxup + H;
+			qxup = jxup + 0.05 * H;
+			qxdw = jxdw - 0.05 * H;
+
+			var $jxup = document.getElementById("jxup");
+			var $jxdw = document.getElementById("jxdw");
+			var $qxup = document.getElementById("qxup");
+			var $qxdw = document.getElementById("qxdw");
+
+			setjxwz($jxup,oC_x,jxup,20);
+			setjxwz($jxdw,oC_x,jxdw,20);
+			setjxwz($qxup,oC_x,qxup,20);
+			setjxwz($qxdw,oC_x,qxdw,20);
+
+			
+		}
+
+		function setjxwz(l,x,y,len){
+			l.setAttribute("x1",x);
+			l.setAttribute("y1",y);
+			l.setAttribute("x2",x+len);
+			l.setAttribute("y2",y);
+		}
+
 		var interval;
 		function set(){
+			clearInterval(interval);
+			if(isBeginAni){
+				isBeginAni = false;
+				document.getElementById("ani").value="开始动画";
+			}
 			fangan = parseInt(document.getElementById("fangan").value) - 1;
 			weizhi = parseInt(document.getElementById("weizhi").value);
 			
 			change_fangan();
-			var j = 0;
-			clearInterval(interval);
-			interval = setInterval(function() {
-				change_jiaodu(j);
-				j = j + 1;
-			},30);
+		}
+
+		var isBeginAni = false;
+		
+		function animates(){
+			if(isBeginAni){
+				clearInterval(interval);
+				isBeginAni = false;
+				document.getElementById("ani").innerText="开始动画";
+			}else{
+				isBeginAni = true;
+				var delay = 100/Omega1;
+				console.log(delay);
+				document.getElementById("ani").innerText="停止动画";
+				interval = setInterval(function() {
+					change_jiaodu(Phi1);
+					Phi1 = Phi1 + 0.1*180/PI;
+					Phi1_h = Phi1_h + 0.1;
+				},delay);
+			}
+			
 		}
 
 	</script>
