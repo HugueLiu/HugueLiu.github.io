@@ -7,139 +7,171 @@
 <body>
 	
 	方案：<input id="fangan" type="number" max="12" min="1" step="1" value="2"><br>
-	位置：<input id="weizhi" type="number" max="14" min="0" step="1" value="10">
+	位置：<input id="weizhi" type="number" max="14" min="0" step="1" value="3">
 	<button type="button" onclick="set()">确定</button>
 	<button id="ani" type="button" onclick="animates()">开始动画</button>
 
 	<script type="text/javascript">
-    try{ 
-        document.createElement("canvas").getContext("2d"); 
-    }catch(e){ 
-        document.getElementById("support").innerHTML = 
-        "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>"; 
-    }
+	    try{ 
+	        document.createElement("canvas").getContext("2d"); 
+	    }catch(e){ 
+	        document.getElementById("support").innerHTML = 
+	        "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>"; 
+	    }
  	</script>
 
 	<!-- <iframe src="demo.svg" width="100%" height="800"></iframe> -->
 
 
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+	<?xml version="1.0" standalone="no"?>
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+	
+	<br><button id="btnjt" onclick="hidejiantu()">隐藏运动简图</button>
+	<div id="yundong" style="width:100%;height:800px;border:1px solid black">
+		<svg width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg">
 
-<svg width="100%" height="800" version="1.1"
-	xmlns="http://www.w3.org/2000/svg">
+			<circle id="o3" cx="400" cy="400" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
 
+			<circle id="o2" cx="600" cy="300" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
 
+			<circle id="ol1" cx="600" cy="300" r="80" stroke="black"
+				stroke-width="1" fill="transparent" stroke-opacity="0.5"/>
 
-<circle id="o3" cx="400" cy="400" r="5" stroke="black"
-	stroke-width="1" fill="red"/>
+			<line id="r3" x1="400" y1="300" x2="600" y2="380"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
 
-<circle id="o2" cx="600" cy="300" r="5" stroke="black"
-	stroke-width="1" fill="red"/>
+			<line id="r3_e" x1="600" y1="380" x2="700" y2="420"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
 
-<circle id="ol1" cx="600" cy="300" r="80" stroke="black"
-	stroke-width="1" fill="transparent" stroke-opacity="0.5"/>
+			<line id="l3" x1="400" y1="300" x2="220" y2="228"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
 
+			<rect id="rA" x="585" y="370" width="30" height="20" fill="white" stroke="black"
+				transform="rotate(45,600 380)"/>
 
+			<circle id="oA" cx="600" cy="380" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
 
-<line id="r3" x1="400" y1="300" x2="600" y2="380"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
+			<line id="l1" x1="600" y1="300" x2="600" y2="380"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
 
-<line id="r3_e" x1="600" y1="380" x2="700" y2="420"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
+			<line id="l6" x1="200" y1="20" x2="200" y2="500"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
 
-<line id="l3" x1="400" y1="300" x2="220" y2="228"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
+			<line id="jxup" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:red;stroke-width:1"/>
 
-<rect id="rA" x="585" y="370" width="30" height="20" fill="white" stroke="black"
-	transform="rotate(45,600 380)"/>
+			<line id="jxdw" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:red;stroke-width:1"/>
 
-<circle id="oA" cx="600" cy="380" r="5" stroke="black"
-	stroke-width="1" fill="red"/>
+			<line id="qxup" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:blue;stroke-width:1"/>
 
-<line id="l1" x1="600" y1="300" x2="600" y2="380"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
+			<line id="qxdw" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:blue;stroke-width:1"/>
 
-<line id="l6" x1="200" y1="20" x2="200" y2="500"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
+			<circle id="oB" cx="220" cy="228" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
 
-<line id="jxup" x1="200" y1="20" x2="300" y2="20"
-	style="stroke:red;stroke-width:1"/>
+			<rect id="rC" x="185" y="90" width="20" height="30" fill="white" stroke="black"/>
 
-<line id="jxdw" x1="200" y1="20" x2="300" y2="20"
-	style="stroke:red;stroke-width:1"/>
+			<line id="l4" x1="220" y1="228" x2="200" y2="100"
+				style="stroke:rgb(99,99,99);stroke-width:2" />
 
-<line id="qxup" x1="200" y1="20" x2="300" y2="20"
-	style="stroke:blue;stroke-width:1"/>
+			<circle id="oC" cx="200" cy="100" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
 
-<line id="qxdw" x1="200" y1="20" x2="300" y2="20"
-	style="stroke:blue;stroke-width:1"/>
+			<line id="la" x1="200" y1="100" x2="100" y2="100"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+		</svg>	
+	</div>
 
-<circle id="oB" cx="220" cy="228" r="5" stroke="black"
-	stroke-width="1" fill="red"/>
+	<br><button id="btnsd" onclick="hidesudu()">显示速度图</button>
+	<div id="sudu" style="width:100%;height:400px;border:1px solid black;display: none">
+		<svg width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg">
+			<line id="pa3" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pa2" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="a2a3" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pb" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pc" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="bc" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+		</svg>
+	</div>
 
-<rect id="rC" x="185" y="90" width="20" height="30" fill="white" stroke="black"/>
+	<br><button id="btndt" onclick="hidedata()">显示数据</button>
+	<div id="data" style="width:100%;border:1px solid black;display: none">
+		K:<input id="K" type="number" style="width:100px">
+		H:<input id="H" type="number" style="width:100px">
+		l<sub>6</sub>:<input id="l6" type="number" style="width:100px">
+		ξ:<input id="Xi" type="number" style="width:100px">
+		n<sub>1</sub>:<input id="n1" type="number" style="width:100px">
+		F:<input id="F" type="number" style="width:100px">
+		G<sub>3</sub>:<input id="G3" type="number" style="width:100px">
+		G<sub>5</sub>:<input id="G5" type="number" style="width:100px">
+		a:<input id="a" type="number" style="width:100px">
+		b:<input id="b" type="number" style="width:100px">
+		c:<input id="c" type="number" style="width:100px">
+		d:<input id="d" type="number" style="width:100px">
+		δ:<input id="delta" type="number" style="width:100px">
+		J<sub>S3</sub>:<input id="JS3" type="number" style="width:100px">
+	
+		l<sub>1</sub>:<input id="l1" type="number" style="width:100px">
+		l<sub>3</sub>:<input id="l3" type="number" style="width:100px">
+		l<sub>4</sub>:<input id="l4" type="number" style="width:100px">
+		h:<input id="h" type="number" style="width:100px">
+		r<sub>3</sub>:<input id="r3" type="number" style="width:100px">
 
-<line id="l4" x1="220" y1="228" x2="200" y2="100"
-	style="stroke:rgb(99,99,99);stroke-width:2" />
-
-<circle id="oC" cx="200" cy="100" r="5" stroke="black"
-	stroke-width="1" fill="red"/>
-
-<line id="la" x1="200" y1="100" x2="100" y2="100"
-	style="stroke:rgb(99,99,99);stroke-width:2"/>
-
-</svg>
+		φ<sub>0</sub>:<input id="Phi0" type="number" style="width:100px">
+		φ<sub>1</sub>:<input id="phi1" type="number" style="width:100px">
+		φ<sub>3</sub>:<input id="phi3" type="number" style="width:100px">
+		φ<sub>4</sub>:<input id="phi4" type="number" style="width:100px">
+		ψ:<input id="Psi" type="number" style="width:100px">
+		S:<input id="S" type="number" style="width:100px">
+		x<sub>3</sub>:<input id="x3" type="number" style="width:100px">
+		y<sub>3</sub>:<input id="y3" type="number" style="width:100px">
+		θ<sub>3</sub>:<input id="theta3" type="number" style="width:100px">
+		r<sub>3</sub>':<input id="r3_d" type="number" style="width:100px">
+		r<sub>3</sub>'':<input id="r3_dd" type="number" style="width:100px">
+		x<sub>3</sub>'':<input id="x3_dd" type="number" style="width:100px">
+		y<sub>3</sub>'':<input id="y3_dd" type="number" style="width:100px">
+		V<sub>c</sub>:<input id="Vc" type="number" style="width:100px">
+		x<sub>3</sub>':<input id="x3_d" type="number" style="width:100px">
+		y<sub>3</sub>':<input id="y3_d" type="number" style="width:100px">
+		ω<sub>1</sub>:<input id="Omega1" type="number" style="width:100px">
+		ω<sub>3</sub>:<input id="Omega3" type="number" style="width:100px">
+		ω<sub>4</sub>:<input id="Omega4" type="number" style="width:100px">
+		α<sub>3</sub>:<input id="Alpha3" type="number" style="width:100px">
+		α<sub>4</sub>:<input id="Alpha4" type="number" style="width:100px">
+		a<sub>c</sub>:<input id="ac" type="number" style="width:100px">
+		F<sub>ix3</sub>:<input id="Fix3" type="number" style="width:100px">
+		F<sub>iy3</sub>:<input id="Fiy3" type="number" style="width:100px">
+		M<sub>i3</sub>:<input id="Mi3" type="number" style="width:100px">
+		F<sub>i5</sub>:<input id="Fi5" type="number" style="width:100px">
+		R<sub>34</sub>:<input id="R34" type="number" style="width:100px">
+		R<sub>45</sub>:<input id="R45" type="number" style="width:100px">
+		R<sub>65</sub>:<input id="R65" type="number" style="width:100px">
+		h<sub>65</sub>:<input id="h65" type="number" style="width:100px">
+		R<sub>12</sub>:<input id="R12" type="number" style="width:100px">
+		X<sub>63</sub>:<input id="X63" type="number" style="width:100px">
+		Y<sub>63</sub>:<input id="Y63" type="number" style="width:100px">
+		R<sub>63</sub>:<input id="R63" type="number" style="width:100px">
+		M<sub>b</sub>:<input id="Mb" type="number" style="width:100px">
+		R<sub>61</sub>:<input id="R61" type="number" style="width:100px">
+		M<sub>b</sub>':<input id="Mb_p" type="number" style="width:100px">
+		
+	</div>
 	<script>
-
-		var K_a = new Array(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);
-		var H_a = new Array(100,150,160,140,110,135,120,110,120,130,200,220);
-		var l6_a = new Array(150,185,200,180,170,140,160,170,160,150,210,230);
-		var Xi_a = new Array(1,0.8,1.0,0.8,1.0,1.1,1,0.9,1.1,0.85,0.9,1.0);
-		var n1_a = new Array(120,120,140,150,130,140,130,130,140,130,300,400);
-		var F_a = new Array(1200,1000,1200,1400,1300,1200,1300,1100,1300,1400,2000,3000);
-		var G3_a = new Array(160,200,170,160,190,200,190,170,150,180,160,165);
-		var G5_a = new Array(320,360,330,400,380,400,410,330,320,340,400,500);
-		var a_a = new Array(50,65,45,55,50,70,50,70,55,60,50,45);
-		var b_a = new Array(50,70,70,60,50,60,60,60,55,65,60,55);
-		var c_a = new Array(120,160,120,110,130,140,100,130,140,150,130,120);
-		var d_a = new Array(125,130,135,120,130,140,110,140,150,150,140,130);
-		var delta_a = new Array(0.04,0.03,0.02,0.05,0.06,0.05,0.04,0.05,0.03,0.06,0.03,0.02);
-		var JS3_a = new Array(0.14,0.3,0.4,0.3,0.25,0.5,0.45,0.2,0.35,0.25,0.4,0.5);
-		// var svg = document.getElementsByTagName('iframe')[0].getSVGDocument();
-		// console.log(svg);
-		var K, H, l6, Xi, n1, F, G3, G5, a, b, c, d, delta, JS3;
-		var Phi0, Phi0_h, Phi1, Phi1_h, Phi3, Phi3_h, Phi4, Phi4_h; //φ
-		var Psi, Psi_h; //Ψ
-		var l1, l3, l4, h, r3, S, x3, y3, theta3_h;
-		var r3_d, r3_dd, x3_dd, y3_dd, Vc, x3_d, y3_d;
-		var Omega1, Omega3, Omega4, Alpha3, Alpha4, ac;
-		var g = 9.8,PI = 3.1416;
-		var Fix3, Fiy3, Mi3, Fi5, R34, R45, R65, h65, R12, X63, Y63, R63, Mb, R61, Mb_p;
-
-		var o3_x, o3_y, o2_x, o2_y;
-		var jxup,jxdw,qxup,qxdw;
-
-		var scale = 1000;
-		var fangan,weizhi;
-
-		var $l1 = document.getElementById("l1");
-		var $l6 = document.getElementById("l6");
-		var $l3 = document.getElementById("l3");
-		var $l4 = document.getElementById("l4");
-		var $r3 = document.getElementById("r3");
-		var $o2 = document.getElementById("o2");
-		var $o3 = document.getElementById("o3");
-		var $ol1 = document.getElementById("ol1");
-		var $oA = document.getElementById("oA");
-		var $oB = document.getElementById("oB");
-		var $oC = document.getElementById("oC");
-		var $la = document.getElementById("la");
-		var $rC = document.getElementById("rC");
-		var $rA = document.getElementById("rA");
-		var $r3_e = document.getElementById("r3_e");
-
 		function change_scale(s) {
 			scale = s;
 			change_fangan(fangan);
@@ -227,27 +259,26 @@
 
 		function change_jiaodu(j){
 			Phi1 = j;
-			Phi1_h = Phi1 * PI / 180;
+			Phi1_h = -Phi1 * PI / 180;
 			
 			r3 = Math.pow(l1*l1 + l6*l6 + 2 * l1*l6*Math.cos(Phi1_h), 0.5);
 			// console.log(r3);
-			var oA_x = o2_x + Math.cos(Phi1_h) * l1;
-			var oA_y = o2_y - Math.sin(Phi1_h) * l1;
+			oA_x = o2_x + Math.cos(Phi1_h) * l1;
+			oA_y = o2_y + Math.sin(Phi1_h) * l1;
 			
 			$oA.setAttribute("cx",oA_x);
 			$oA.setAttribute("cy",oA_y);
 
-			
 			$l1.setAttribute("x2",oA_x);
 			$l1.setAttribute("y2",oA_y);
 
 			$r3.setAttribute("x2",oA_x);
 			$r3.setAttribute("y2",oA_y);
 
-			var l3_k = (o3_y - oA_y) / (o3_x - oA_x);
-			var theta = Math.atan(l3_k);
-			var	oB_x = o3_x - l3 * Math.cos(theta);
-			var	oB_y = o3_y - l3 * Math.sin(theta);
+			k_l3 = (o3_y - oA_y) / (o3_x - oA_x);
+			var theta = Math.atan(k_l3);
+			oB_x = o3_x - l3 * Math.cos(theta);
+			oB_y = o3_y - l3 * Math.sin(theta);
 
 			$oB.setAttribute("cx",oB_x);
 			$oB.setAttribute("cy",oB_y);
@@ -255,8 +286,8 @@
 			$l3.setAttribute("x2",oB_x);
 			$l3.setAttribute("y2",oB_y);
 
-			var oC_x = o3_x - h;
-			var oC_y = oB_y - Math.sqrt(l4*l4-Math.pow(oB_x - oC_x,2));
+			oC_x = o3_x - h;
+			oC_y = oB_y - Math.sqrt(l4*l4-Math.pow(oB_x - oC_x,2));
 
 			$l4.setAttribute("x1",oB_x);
 			$l4.setAttribute("y1",oB_y);
@@ -270,12 +301,81 @@
 			$rC.setAttribute("y",oC_y - 15);
 			$rA.setAttribute("x",oA_x - 15);
 			$rA.setAttribute("y",oA_y - 10);
-			$rA.setAttribute("transform","rotate("+(l3_k*180/PI)+","+oA_x+" "+oA_y+")");
+			$rA.setAttribute("transform","rotate("+(k_l3*180/PI)+","+oA_x+" "+oA_y+")");
 
 			$r3_e.setAttribute("x1",oA_x);
 			$r3_e.setAttribute("y1",oA_y);
 			$r3_e.setAttribute("x2",oA_x+(350-r3)*Math.cos(theta));
 			$r3_e.setAttribute("y2",oA_y+(350-r3)*Math.sin(theta));
+
+			sudu();
+
+			var y = l1 * Math.sin(Phi1_h);
+			var x = Math.pow(r3*r3 - y*y, 0.5);
+			if (x === 0) {
+				Phi3_h = y>0 ? PI / 2 : -PI / 2;
+			}else {
+				Phi3_h = Math.atan(y / x);
+			}
+
+			S = -l3*Math.sin(Phi3_h) + Math.pow(l4*l4 - Math.pow(h - l3*Math.cos(Phi3_h), 2), 0.5);
+			y = l3*Math.sin(Phi3_h) + S;
+			x = l3*Math.cos(Phi3_h) - h;
+			if(x === 0) {
+				Phi4_h = y>0 ? PI / 2 : -PI / 2;
+			}else{
+				Phi4_h = Math.atan(y / x);
+				if(x < 0) {
+					if(y >= 0) {
+						Phi4_h += PI;
+					}else{
+						Phi4_h -= PI;
+					}
+				}
+			}
+
+			if(a == d) {
+				theta3_h = a>0 ? PI / 2 : -PI / 2;
+			}else{
+				theta3_h = Math.atan(a / Math.pow(d*d - a*a, 0.5));
+			}
+
+			x3 = h + d * Math.cos(theta3_h + Phi3_h);
+			y3 = d * Math.sin(theta3_h + Phi3_h);
+
+
+			r3_d = -l1*l6*Omega1*Math.sin(Phi1_h) / r3;
+			Omega3 = (l1*Omega1*Math.cos(Phi1_h) - r3_d*Math.sin(Phi3_h)) / (r3*Math.cos(Phi3_h));
+
+			Omega4 = Omega3 * Math.sin(Phi3_h) / (Xi * Math.sin(Phi4_h));
+			Vc = l4 * Omega4 * Math.cos(Phi4_h) - l3 * Omega3 * Math.cos(Phi3_h);
+
+			x3_d = -d * Omega3 * Math.sin(theta3_h + Phi3_h);
+			y3_d = d * Omega3 * Math.cos(theta3_h + Phi3_h);
+
+			r3_dd = -(r3_d*r3_d + l1*l6*Omega1*Omega1*Math.cos(Phi1_h)) / r3;
+			Alpha3 = (Omega3*(r3*Omega3*Math.sin(Phi3_h) - 2 * r3_d*Math.cos(Phi3_h))- r3_dd * Math.sin(Phi3_h) - l1 * Omega1 * Omega1 * Math.sin(Phi1_h))/ (r3*Math.cos(Phi3_h));
+			Alpha4 = (Alpha3*Math.sin(Phi3_h) + Omega3*Omega3*Math.cos(Phi3_h)- Xi*Omega4*Omega4*Math.cos(Phi4_h)) / (Xi*Math.sin(Phi4_h));
+			ac = l4*(Alpha4*Math.cos(Phi4_h) - Omega4*Omega4*Math.sin(Phi4_h))- l3*(Alpha3*Math.cos(Phi3_h) - Omega3*Omega3*Math.sin(Phi3_h));
+			x3_dd = -d*(Alpha3*Math.sin(theta3_h + Phi3_h) + Omega3*Omega3*Math.cos(theta3_h + Phi3_h));
+			y3_dd = d*(Alpha3*Math.cos(theta3_h + Phi3_h) - Omega3*Omega3*Math.sin(theta3_h + Phi3_h));
+
+			Fix3 = G3 / g * x3_dd;
+			Fiy3 = G3 / g * y3_dd;
+			Mi3 = JS3 * Alpha3;
+			Fi5 = G5 / g * ac;
+			R34 = R45 = (F - G5 - Fi5) / Math.sin(Phi4_h);
+			R65 = -R45 * Math.cos(Phi4_h);
+			h65 = (F*c - (G5 + Fi5)*b) / R65;
+			R12 = ((G3 + Fiy3)*d*Math.cos(Phi3_h + theta3_h) + Mi3 -
+				l3*R45*Math.sin(Phi3_h - Phi4_h) - Fix3*d*Math.sin(Phi3_h + theta3_h)) / r3;
+			X63 = Fix3 + R12*Math.sin(Phi3_h) - R45*Math.cos(Phi4_h);
+			Y63 = G3 + Fiy3 - R12*Math.cos(Phi3_h) - R45*Math.sin(Phi4_h);
+			R63 = Math.pow(X63*X63 + Y63*Y63, 0.5);
+			Mb = R12*l1*Math.cos(Phi3_h - Phi1_h);
+			R61 = R12;
+			Mb_p = ((G3 + Fiy3)*y3_d + Fix3*x3 + Mi3*Omega3 + (G5 + Fi5 - F)*Vc) / Omega1;
+			shuju();
 		}
 
 		function jxwz() {
@@ -308,8 +408,6 @@
 			setjxwz($jxdw,oC_x,jxdw,20);
 			setjxwz($qxup,oC_x,qxup,20);
 			setjxwz($qxdw,oC_x,qxdw,20);
-
-			
 		}
 
 		function setjxwz(l,x,y,len){
@@ -319,7 +417,6 @@
 			l.setAttribute("y2",y);
 		}
 
-		var interval;
 		function set(){
 			clearInterval(interval);
 			if(isBeginAni){
@@ -332,8 +429,6 @@
 			change_fangan();
 		}
 
-		var isBeginAni = false;
-		
 		function animates(){
 			if(isBeginAni){
 				clearInterval(interval);
@@ -342,16 +437,227 @@
 			}else{
 				isBeginAni = true;
 				var delay = 100/Omega1;
-				console.log(delay);
+				// console.log(delay);
 				document.getElementById("ani").innerText="停止动画";
 				interval = setInterval(function() {
 					change_jiaodu(Phi1);
 					Phi1 = Phi1 + 0.1*180/PI;
-					Phi1_h = Phi1_h + 0.1;
+					Phi1_h = Phi1_h - 0.1;
 				},delay);
 			}
-			
 		}
+
+		function sudu(){
+			var scale_sudu = 100;
+			var op_x = 200,op_y = 200;
+			var a2_x,a2_y,a3_x,a3_y,b_x,b_y,c_x,c_y;
+			var vA2 = Omega1 * l1 / scale * scale_sudu;
+			var vA3,vA3A2,vb,vc;
+			var theta_pa2 = (Phi1_h - PI / 2) % (2 * PI);
+			a2_x = op_x + vA2 * Math.cos(theta_pa2);
+			a2_y = op_y + vA2 * Math.sin(theta_pa2);
+
+			var theta_pa3 = Math.atan(-1/k_l3);
+			if(Math.abs(theta_pa2 - theta_pa3) > PI / 2){
+				theta_pa3 = theta_pa3 + PI;
+			}
+			var theta_pa3a2 = Math.abs(theta_pa2 - theta_pa3);
+			vA3 = vA2 * Math.cos(theta_pa3a2);
+			a3_x = op_x + vA3 * Math.cos(theta_pa3);
+			a3_y = op_y + vA3 * Math.sin(theta_pa3);
+
+			vb = vA3 * (l3 / r3);
+			b_x = op_x + vb * Math.cos(theta_pa3+PI);
+			b_y = op_y + vb * Math.sin(theta_pa3+PI);
+
+			c_x = op_x;
+			c_y = op_y + vb / Math.cos(PI/2+theta_pa3);
+
+
+			$pa2.setAttribute("x1",op_x);
+			$pa2.setAttribute("y1",op_y);
+			$pa2.setAttribute("x2",a2_x);
+			$pa2.setAttribute("y2",a2_y);
+
+			$pa3.setAttribute("x1",op_x);
+			$pa3.setAttribute("y1",op_y);
+			$pa3.setAttribute("x2",a3_x);
+			$pa3.setAttribute("y2",a3_y);
+
+			$a2a3.setAttribute("x1",a2_x);
+			$a2a3.setAttribute("y1",a2_y);
+			$a2a3.setAttribute("x2",a3_x);
+			$a2a3.setAttribute("y2",a3_y);
+			
+			$pb.setAttribute("x1",op_x);
+			$pb.setAttribute("y1",op_y);
+			$pb.setAttribute("x2",b_x);
+			$pb.setAttribute("y2",b_y);
+
+			$pc.setAttribute("x1",op_x);
+			$pc.setAttribute("y1",op_y);
+			$pc.setAttribute("x2",c_x);
+			$pc.setAttribute("y2",c_y);
+
+			$bc.setAttribute("x1",b_x);
+			$bc.setAttribute("y1",b_y);
+			$bc.setAttribute("x2",c_x);
+			$bc.setAttribute("y2",c_y);
+		}
+
+		function shuju(){
+			document.getElementById("K").value=K;
+			document.getElementById("H").value=H;
+			document.getElementById("l6").value=l6;
+			document.getElementById("Xi").value=Xi;
+			document.getElementById("n1").value=n1;
+			document.getElementById("F").value=F;
+			document.getElementById("G3").value=G3;
+			document.getElementById("G5").value=G5;
+			document.getElementById("a").value=a;
+			document.getElementById("b").value=b;
+			document.getElementById("c").value=c;
+			document.getElementById("d").value=d;
+			document.getElementById("delta").value=delta;
+			document.getElementById("JS3").value=JS3;
+
+			document.getElementById("l1").value=l1;
+			document.getElementById("l3").value=l3;
+			document.getElementById("l4").value=l4;
+			document.getElementById("h").value=h;
+			document.getElementById("r3").value=r3;
+
+			document.getElementById("Phi0").value=Phi0_h;
+			document.getElementById("phi1").value=Phi1_h;
+			document.getElementById("phi3").value=Phi3_h;
+			document.getElementById("phi4").value=Phi4_h;
+			document.getElementById("Psi").value=Psi_h;
+			document.getElementById("S").value=S;
+			document.getElementById("x3").value=x3;
+			document.getElementById("y3").value=y3;
+			document.getElementById("theta3").value=theta3_h;
+			document.getElementById("r3_d").value=r3_d;
+			document.getElementById("r3_dd").value=r3_dd;
+			document.getElementById("x3_dd").value=x3_dd;
+			document.getElementById("y3_dd").value=y3_dd;
+			document.getElementById("Vc").value=Vc;
+			document.getElementById("x3_d").value=x3_d;
+			document.getElementById("y3_d").value=y3_d;
+			document.getElementById("Omega1").value=Omega1;
+			document.getElementById("Omega3").value=Omega3;
+			document.getElementById("Omega4").value=Omega4;
+			document.getElementById("Alpha3").value=Alpha3;
+			document.getElementById("Alpha4").value=Alpha4;
+			document.getElementById("ac").value=ac;
+			document.getElementById("Fix3").value=Fix3;
+			document.getElementById("Fiy3").value=Fiy3;
+			document.getElementById("Mi3").value=Mi3;
+			document.getElementById("Fi5").value=Fi5;
+			document.getElementById("R34").value=R34;
+			document.getElementById("R45").value=R45;
+			document.getElementById("R65").value=R65;
+			document.getElementById("h65").value=h65;
+			document.getElementById("R12").value=R12;
+			document.getElementById("X63").value=X63;
+			document.getElementById("Y63").value=Y63;
+			document.getElementById("R63").value=R63;
+			document.getElementById("Mb").value=Mb;
+			document.getElementById("R61").value=R61;
+			document.getElementById("Mb_p").value=Mb_p;
+		}
+
+		function hidejiantu(){
+			if(document.getElementById("btnjt").innerText == "隐藏运动简图"){
+				document.getElementById("btnjt").innerText = "显示运动简图";
+				document.getElementById("yundong").style.display="none";
+			}else{
+				document.getElementById("btnjt").innerText = "隐藏运动简图";
+				document.getElementById("yundong").style.display="block";
+			}
+		}
+
+		function hidesudu() {
+			if(document.getElementById("btnsd").innerText == "隐藏速度图"){
+				document.getElementById("btnsd").innerText = "显示速度图";
+				document.getElementById("sudu").style.display="none";
+			}else{
+				document.getElementById("btnsd").innerText = "隐藏速度图";
+				document.getElementById("sudu").style.display="block";
+			}
+		}
+
+		function hidedata() {
+			if(document.getElementById("btndt").innerText == "隐藏数据"){
+				document.getElementById("btndt").innerText = "显示数据";
+				document.getElementById("data").style.display="none";
+			}else{
+				document.getElementById("btndt").innerText = "隐藏数据";
+				document.getElementById("data").style.display="block";
+			}
+		}
+
+
+		var K_a = new Array(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);
+		var H_a = new Array(100,150,160,140,110,135,120,110,120,130,200,220);
+		var l6_a = new Array(150,185,200,180,170,140,160,170,160,150,210,230);
+		var Xi_a = new Array(1,0.8,1.0,0.8,1.0,1.1,1,0.9,1.1,0.85,0.9,1.0);
+		var n1_a = new Array(120,120,140,150,130,140,130,130,140,130,300,400);
+		var F_a = new Array(1200,1000,1200,1400,1300,1200,1300,1100,1300,1400,2000,3000);
+		var G3_a = new Array(160,200,170,160,190,200,190,170,150,180,160,165);
+		var G5_a = new Array(320,360,330,400,380,400,410,330,320,340,400,500);
+		var a_a = new Array(50,65,45,55,50,70,50,70,55,60,50,45);
+		var b_a = new Array(50,70,70,60,50,60,60,60,55,65,60,55);
+		var c_a = new Array(120,160,120,110,130,140,100,130,140,150,130,120);
+		var d_a = new Array(125,130,135,120,130,140,110,140,150,150,140,130);
+		var delta_a = new Array(0.04,0.03,0.02,0.05,0.06,0.05,0.04,0.05,0.03,0.06,0.03,0.02);
+		var JS3_a = new Array(0.14,0.3,0.4,0.3,0.25,0.5,0.45,0.2,0.35,0.25,0.4,0.5);
+		// var svg = document.getElementsByTagName('iframe')[0].getSVGDocument();
+		// console.log(svg);
+		var K, H, l6, Xi, n1, F, G3, G5, a, b, c, d, delta, JS3;
+		var Phi0, Phi0_h, Phi1, Phi1_h, Phi3, Phi3_h, Phi4, Phi4_h; //φ
+		var Psi, Psi_h; //Ψ
+		var l1, l3, l4, h, r3, S, x3, y3, theta3_h;
+		var r3_d, r3_dd, x3_dd, y3_dd, Vc, x3_d, y3_d;
+		var Omega1, Omega3, Omega4, Alpha3, Alpha4, ac;
+		var g = 9.8,PI = 3.1416;
+		var Fix3, Fiy3, Mi3, Fi5, R34, R45, R65, h65, R12, X63, Y63, R63, Mb, R61, Mb_p;
+
+		var o3_x, o3_y, o2_x, o2_y,oA_x,oA_y,oB_x,oB_y,oC_x,oC_y;
+		var jxup,jxdw,qxup,qxdw;
+
+		var k_l3,k_l1,k_l4;
+
+		var scale = 1000;
+		var fangan,weizhi;
+
+		//简图
+		var $l1 = document.getElementById("l1");
+		var $l6 = document.getElementById("l6");
+		var $l3 = document.getElementById("l3");
+		var $l4 = document.getElementById("l4");
+		var $r3 = document.getElementById("r3");
+		var $o2 = document.getElementById("o2");
+		var $o3 = document.getElementById("o3");
+		var $ol1 = document.getElementById("ol1");
+		var $oA = document.getElementById("oA");
+		var $oB = document.getElementById("oB");
+		var $oC = document.getElementById("oC");
+		var $la = document.getElementById("la");
+		var $rC = document.getElementById("rC");
+		var $rA = document.getElementById("rA");
+		var $r3_e = document.getElementById("r3_e");
+
+		//速度
+		var $pa2 = document.getElementById("pa2");
+		var $pa3 = document.getElementById("pa3");
+		var $a2a3 = document.getElementById("a2a3");
+		var $pb = document.getElementById("pb");
+		var $pc = document.getElementById("pc");
+		var $bc = document.getElementById("bc");
+
+		var interval;
+		var isBeginAni = false;
+		set();
 
 	</script>
 </body>
