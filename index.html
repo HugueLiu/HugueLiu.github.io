@@ -261,8 +261,8 @@
 			var l1_s = l1/scale,l3_s=l3/scale,l4_s=l4/scale,l6_s=l6/scale,h_s=h/scale;
 			var a_s = a/scale,b_s=b/scale,c_s=c/scale,d_s=d/scale;
 
-			Phi1 = -j;
-			Phi1_h = Phi1 * PI / 180;
+			Phi1 = j;
+			Phi1_h = -Phi1 * PI / 180;
 			
 			r3 = Math.pow(l1*l1 + l6*l6 + 2 * l1*l6*Math.cos(Phi1_h), 0.5);
 			var r3_s = r3/scale;
