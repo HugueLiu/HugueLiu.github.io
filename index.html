@@ -109,7 +109,7 @@
 		</svg>
 	</div>
 
-	<br><button id="btndt" onclick="hidedata()">显示数据</button>
+	<!-- <br><button id="btndt" onclick="hidedata()">显示数据</button>
 	<div id="data" style="width:100%;border:1px solid black;display: none">
 		K:<input id="txt_K" type="number" style="width:100px">
 		H:<input id="txt_H" type="number" style="width:100px">
@@ -168,7 +168,7 @@
 		R<sub>63</sub>:<input id="txt_R63" type="number" style="width:100px">
 		M<sub>b</sub>:<input id="txt_Mb" type="number" style="width:100px">
 		R<sub>61</sub>:<input id="txt_R61" type="number" style="width:100px"><br>
-		M<sub>b</sub>':<input id="txt_Mb_p" type="number" style="width:100px">
+		M<sub>b</sub>':<input id="txt_Mb_p" type="number" style="width:100px"> -->
 		
 	</div>
 	<script>
@@ -350,9 +350,9 @@
 
 			r3_d = -l1_s*l6_s*Omega1*Math.sin(Phi1_h) / r3_s;
 			Omega3 = (l1_s*Omega1*Math.cos(Phi1_h) - r3_d*Math.sin(Phi3_h)) / (r3_s*Math.cos(Phi3_h));
-			console.log(Omega3);
+			// console.log(Omega3);
 			Omega4 = Omega3 * Math.sin(Phi3_h) / (Xi * Math.sin(Phi4_h));
-			console.log(Omega4);
+			// console.log(Omega4);
 			Vc = l4_s * Omega4 * Math.cos(Phi4_h) - l3_s * Omega3 * Math.cos(Phi3_h);
 
 			x3_d = -d_s * Omega3 * Math.sin(theta3_h + Phi3_h);
@@ -380,7 +380,7 @@
 			Mb = R12*l1_s*Math.cos(Phi3_h - Phi1_h);
 			R61 = R12;
 			Mb_p = ((G3 + Fiy3)*y3_d + Fix3*x3 + Mi3*Omega3 + (G5 + Fi5 - F)*Vc) / Omega1;
-			shuju();
+			// shuju();
 		}
 
 		function jxwz() {
@@ -476,7 +476,8 @@
 			b_y = op_y + vb * Math.sin(theta_pa3+PI);
 
 			c_x = op_x;
-			c_y = op_y + vb / Math.cos(PI/2+theta_pa3);
+			// c_y = op_y + vb / Math.cos(PI/2+theta_pa3);
+			c_y = b_y + (oB_x - oC_x)/(oC_y - oB_y)*(op_x-b_x);
 
 
 			$pa2.setAttribute("x1",op_x);
@@ -510,66 +511,66 @@
 			$bc.setAttribute("y2",c_y);
 		}
 
-		function shuju(){
-			document.getElementById("txt_K").value=K;
-			document.getElementById("txt_H").value=H/scale;
-			document.getElementById("txt_l6").value=l6/scale;
-			document.getElementById("txt_Xi").value=Xi;
-			document.getElementById("txt_n1").value=n1;
-			document.getElementById("txt_F").value=F;
-			document.getElementById("txt_G3").value=G3;
-			document.getElementById("txt_G5").value=G5;
-			document.getElementById("txt_a").value=a/scale;
-			document.getElementById("txt_b").value=b/scale;
-			document.getElementById("txt_c").value=c/scale;
-			document.getElementById("txt_d").value=d/scale;
-			document.getElementById("txt_delta").value=delta;
-			document.getElementById("txt_JS3").value=JS3;
+		// function shuju(){
+		// 	document.getElementById("txt_K").value=K;
+		// 	document.getElementById("txt_H").value=H/scale;
+		// 	document.getElementById("txt_l6").value=l6/scale;
+		// 	document.getElementById("txt_Xi").value=Xi;
+		// 	document.getElementById("txt_n1").value=n1;
+		// 	document.getElementById("txt_F").value=F;
+		// 	document.getElementById("txt_G3").value=G3;
+		// 	document.getElementById("txt_G5").value=G5;
+		// 	document.getElementById("txt_a").value=a/scale;
+		// 	document.getElementById("txt_b").value=b/scale;
+		// 	document.getElementById("txt_c").value=c/scale;
+		// 	document.getElementById("txt_d").value=d/scale;
+		// 	document.getElementById("txt_delta").value=delta;
+		// 	document.getElementById("txt_JS3").value=JS3;
 
-			document.getElementById("txt_l1").value=l1/scale;
-			document.getElementById("txt_l3").value=l3/scale;
-			document.getElementById("txt_l4").value=l4/scale;
-			document.getElementById("txt_h").value=h/scale;
-			document.getElementById("txt_r3").value=r3/scale;
+		// 	document.getElementById("txt_l1").value=l1/scale;
+		// 	document.getElementById("txt_l3").value=l3/scale;
+		// 	document.getElementById("txt_l4").value=l4/scale;
+		// 	document.getElementById("txt_h").value=h/scale;
+		// 	document.getElementById("txt_r3").value=r3/scale;
 
-			document.getElementById("txt_Phi0").value=Phi0_h;
-			document.getElementById("txt_phi1").value=Phi1_h;
-			document.getElementById("txt_phi3").value=Phi3_h;
-			document.getElementById("txt_phi4").value=Phi4_h;
-			document.getElementById("txt_Psi").value=Psi_h;
-			document.getElementById("txt_S").value=S;
-			document.getElementById("txt_x3").value=x3;
-			document.getElementById("txt_y3").value=y3;
-			document.getElementById("txt_theta3").value=theta3_h;
-			document.getElementById("txt_r3_d").value=r3_d;
-			document.getElementById("txt_r3_dd").value=r3_dd;
-			document.getElementById("txt_x3_dd").value=x3_dd;
-			document.getElementById("txt_y3_dd").value=y3_dd;
-			document.getElementById("txt_Vc").value=Vc;
-			document.getElementById("txt_x3_d").value=x3_d;
-			document.getElementById("txt_y3_d").value=y3_d;
-			document.getElementById("txt_Omega1").value=Omega1;
-			document.getElementById("txt_Omega3").value=Omega3;
-			document.getElementById("txt_Omega4").value=Omega4;
-			document.getElementById("txt_Alpha3").value=Alpha3;
-			document.getElementById("txt_Alpha4").value=Alpha4;
-			document.getElementById("txt_ac").value=ac;
-			document.getElementById("txt_Fix3").value=Fix3;
-			document.getElementById("txt_Fiy3").value=Fiy3;
-			document.getElementById("txt_Mi3").value=Mi3;
-			document.getElementById("txt_Fi5").value=Fi5;
-			document.getElementById("txt_R34").value=R34;
-			document.getElementById("txt_R45").value=R45;
-			document.getElementById("txt_R65").value=R65;
-			document.getElementById("txt_h65").value=h65;
-			document.getElementById("txt_R12").value=R12;
-			document.getElementById("txt_X63").value=X63;
-			document.getElementById("txt_Y63").value=Y63;
-			document.getElementById("txt_R63").value=R63;
-			document.getElementById("txt_Mb").value=Mb;
-			document.getElementById("txt_R61").value=R61;
-			document.getElementById("txt_Mb_p").value=Mb_p;
-		}
+		// 	document.getElementById("txt_Phi0").value=Phi0_h;
+		// 	document.getElementById("txt_phi1").value=Phi1_h;
+		// 	document.getElementById("txt_phi3").value=Phi3_h;
+		// 	document.getElementById("txt_phi4").value=Phi4_h;
+		// 	document.getElementById("txt_Psi").value=Psi_h;
+		// 	document.getElementById("txt_S").value=S;
+		// 	document.getElementById("txt_x3").value=x3;
+		// 	document.getElementById("txt_y3").value=y3;
+		// 	document.getElementById("txt_theta3").value=theta3_h;
+		// 	document.getElementById("txt_r3_d").value=r3_d;
+		// 	document.getElementById("txt_r3_dd").value=r3_dd;
+		// 	document.getElementById("txt_x3_dd").value=x3_dd;
+		// 	document.getElementById("txt_y3_dd").value=y3_dd;
+		// 	document.getElementById("txt_Vc").value=Vc;
+		// 	document.getElementById("txt_x3_d").value=x3_d;
+		// 	document.getElementById("txt_y3_d").value=y3_d;
+		// 	document.getElementById("txt_Omega1").value=Omega1;
+		// 	document.getElementById("txt_Omega3").value=Omega3;
+		// 	document.getElementById("txt_Omega4").value=Omega4;
+		// 	document.getElementById("txt_Alpha3").value=Alpha3;
+		// 	document.getElementById("txt_Alpha4").value=Alpha4;
+		// 	document.getElementById("txt_ac").value=ac;
+		// 	document.getElementById("txt_Fix3").value=Fix3;
+		// 	document.getElementById("txt_Fiy3").value=Fiy3;
+		// 	document.getElementById("txt_Mi3").value=Mi3;
+		// 	document.getElementById("txt_Fi5").value=Fi5;
+		// 	document.getElementById("txt_R34").value=R34;
+		// 	document.getElementById("txt_R45").value=R45;
+		// 	document.getElementById("txt_R65").value=R65;
+		// 	document.getElementById("txt_h65").value=h65;
+		// 	document.getElementById("txt_R12").value=R12;
+		// 	document.getElementById("txt_X63").value=X63;
+		// 	document.getElementById("txt_Y63").value=Y63;
+		// 	document.getElementById("txt_R63").value=R63;
+		// 	document.getElementById("txt_Mb").value=Mb;
+		// 	document.getElementById("txt_R61").value=R61;
+		// 	document.getElementById("txt_Mb_p").value=Mb_p;
+		// }
 
 		function hidejiantu(){
 			if(document.getElementById("btnjt").innerText == "隐藏运动简图"){
@@ -591,15 +592,15 @@
 			}
 		}
 
-		function hidedata() {
-			if(document.getElementById("btndt").innerText == "隐藏数据"){
-				document.getElementById("btndt").innerText = "显示数据";
-				document.getElementById("data").style.display="none";
-			}else{
-				document.getElementById("btndt").innerText = "隐藏数据";
-				document.getElementById("data").style.display="block";
-			}
-		}
+		// function hidedata() {
+		// 	if(document.getElementById("btndt").innerText == "隐藏数据"){
+		// 		document.getElementById("btndt").innerText = "显示数据";
+		// 		document.getElementById("data").style.display="none";
+		// 	}else{
+		// 		document.getElementById("btndt").innerText = "隐藏数据";
+		// 		document.getElementById("data").style.display="block";
+		// 	}
+		// }
 
 
 		var K_a = new Array(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);
