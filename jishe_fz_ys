@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	方案：<input id="fangan" type="number" max="12" min="1" step="1" value="2"><br>
+	位置：<input id="weizhi" type="number" max="14" min="0" step="1" value="10">
+	<button type="button" onclick="set()">确定</button>
+	<button id="ani" type="button" onclick="animates()">开始动画</button>
+
+	<script type="text/javascript">
+	    try{ 
+	        document.createElement("canvas").getContext("2d"); 
+	    }catch(e){ 
+	        document.getElementById("support").innerHTML = 
+	        "<h3>你的浏览器不支持HTML5,请安装现代化的浏览器。我们推荐使用最新版的Chrome、 FireFox</h3>"; 
+	    }
+ 	</script>
+
+	<?xml version="1.0" standalone="no"?>
+	<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+	"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+	
+	<br><button id="btnjt" onclick="hidejiantu()">隐藏运动简图</button>
+	<div id="yundong" style="width:100%;height:800px;border:1px solid black">
+		<svg width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg">
+
+			<circle id="o3" cx="400" cy="400" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
+
+			<circle id="o2" cx="600" cy="300" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
+
+			<circle id="ol1" cx="600" cy="300" r="80" stroke="black"
+				stroke-width="1" fill="transparent" stroke-opacity="0.5"/>
+
+			<line id="r3" x1="400" y1="300" x2="600" y2="380"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+			<line id="r3_e" x1="600" y1="380" x2="700" y2="420"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+			<line id="l3" x1="400" y1="300" x2="220" y2="228"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+			<rect id="rA" x="585" y="370" width="30" height="20" fill="white" stroke="black"
+				transform="rotate(45,600 380)"/>
+
+			<circle id="oA" cx="600" cy="380" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
+
+			<line id="l1" x1="600" y1="300" x2="600" y2="380"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+			<line id="l6" x1="200" y1="20" x2="200" y2="500"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+			<line id="jxup" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:red;stroke-width:1"/>
+
+			<line id="jxdw" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:red;stroke-width:1"/>
+
+			<line id="qxup" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:blue;stroke-width:1"/>
+
+			<line id="qxdw" x1="200" y1="20" x2="300" y2="20"
+				style="stroke:blue;stroke-width:1"/>
+
+			<circle id="oB" cx="220" cy="228" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
+
+			<rect id="rC" x="185" y="90" width="20" height="30" fill="white" stroke="black"/>
+
+			<line id="l4" x1="220" y1="228" x2="200" y2="100"
+				style="stroke:rgb(99,99,99);stroke-width:2" />
+
+			<circle id="oC" cx="200" cy="100" r="5" stroke="black"
+				stroke-width="1" fill="red"/>
+
+			<line id="la" x1="200" y1="100" x2="100" y2="100"
+				style="stroke:rgb(99,99,99);stroke-width:2"/>
+		</svg>	
+	</div>
+
+	<br><button id="btnsd" onclick="hidesudu()">显示速度图</button>
+	<div id="sudu" style="width:100%;height:400px;border:1px solid black;display: none">
+		<svg width="100%" height="100%" version="1.1"
+			xmlns="http://www.w3.org/2000/svg">
+			
+			<line id="pa3" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pa2" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="a2a3" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pb" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="pc" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<line id="bc" x1="200" y1="100" x2="100" y2="100"
+			style="stroke:black;stroke-width:1"/>
+			<text id="v_p" x="0" y="15" fill="black">p</text>
+			<text id="v_a2" x="0" y="15" fill="black">a2</text>
+			<text id="v_a3" x="0" y="15" fill="black">a3</text>
+			<text id="v_b" x="0" y="15" fill="black">b</text>
+			<text id="v_c" x="0" y="15" fill="black">c</text>
+		</svg>
+	</div>
+
+	<br><button id="btndt" onclick="hidedata()">显示数据</button>
+	<div id="data" style="width:100%;border:1px solid black;display: none">
+	
+		l<sub>1</sub>:<input id="txt_l1" type="number" style="width:100px">
+		l<sub>3</sub>:<input id="txt_l3" type="number" style="width:100px">
+		l<sub>4</sub>:<input id="txt_l4" type="number" style="width:100px">
+		h:<input id="txt_h" type="number" style="width:100px">
+		r<sub>3</sub>:<input id="txt_r3" type="number" style="width:100px"><br>
+		V<sub>a<sub>2</sub></sub><input id="txt_a2" type="number" style="width:100px">
+		V<sub>a<sub>3</sub></sub><input id="txt_a3" type="number" style="width:100px">
+		V<sub>b</sub><input id="txt_b" type="number" style="width:100px">
+		V<sub>c</sub><input id="txt_c" type="number" style="width:100px">
+		V<sub>bc</sub><input id="txt_bc" type="number" style="width:100px"><br>
+		V<sub>a<sub>2</sub>a<sub>3</sub></sub><input id="txt_a3a2" type="number" style="width:100px">
+	</div>
+	<script>
+		eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('D 3O(s){u=s;2z(z)}D 2z(){K=2H[z];H=3b[z]/1d*u;U=2K[z]/1d*u;2s=33[z];2w=3c[z];F=3e[z];3g=3h[z];3m=3o[z];a=3p[z]/1d*u;b=2I[z]/1d*u;c=2L[z]/1d*u;d=2O[z]/1d*u;2U=2W[z];2X=2Y[z];2j=2w*v/30;1U=17*(K-1)/(K+1);1W=3r-1U/2;3i=1W*v/17;1Q=1U*v/17;w=U*t.E(1Q/2);B=H/(2*t.E(1Q/2));I=2s*B;h=B*(1+t.L(1Q/2))/2;A=1Z($23.2V("1q"));1a=1Z($23.2V("1C"));1i=A+U;1j=1a;$1V.o("1q",1i);$1V.o("1C",1j);$1V.o("r",w);$2m.o("1q",1i);$2m.o("1C",1j);$U.o("N",A-h);$U.o("M",A-h);$2b.o("1q",A-h);$1F.o("N",A-h);$1F.o("M",A-h-c);$I.o("M",A-h);$B.o("N",A);$B.o("R",1a);$w.o("N",1i);$w.o("R",1j);$w.o("41",w);$24.o("x",A-h-10);$O.o("N",A);$O.o("R",1a);2F();2G()}D 2G(){V(1k<=11&&1k>=0){16=1W+30*1k}12 V(1k==14){16=40+1U/2}12{16=3Z("请输入φ1(角度)：","")}2B(16)}D 2B(j){6 e=w/u,1N=B/u,2C=I/u,3X=U/u,22=h/u;6 f=a/u,3W=b/u,3V=c/u,1x=d/u;16=j;19=-16*v/17;O=t.C(w*w+U*U+2*w*U*t.L(19),0.5);6 g=O/u;Z=1i+t.L(19)*w;X=1j+t.E(19)*w;$2l.o("1q",Z);$2l.o("1C",X);$w.o("M",Z);$w.o("P",X);$O.o("M",Z);$O.o("P",X);1T=(1a-X)/(A-Z);6 i=t.1s(1T);1g=A-B*t.L(i);1h=1a-B*t.E(i);$27.o("1q",1g);$27.o("1C",1h);$B.o("M",1g);$B.o("P",1h);29=A-h;1b=1h-t.2M(I*I-t.C(1g-29,2));$I.o("N",1g);$I.o("R",1h);$I.o("P",1b);$2b.o("1C",1b);$1F.o("R",1b);$1F.o("P",1b);$24.o("y",1b-15);$1R.o("x",Z-15);$1R.o("y",X-10);$1R.o("3U","3T("+(1T*17/v)+","+Z+" "+X+")");$1D.o("N",Z);$1D.o("R",X);$1D.o("M",Z+(2T-O)*t.L(i));$1D.o("P",X+(2T-O)*t.E(i));1Y();6 y=e*t.E(19);6 x=t.C(g*g-y*y,0.5);V(x===0){18=y>0?v/2:-v/2}12{18=t.1s(y/x)}S=-1N*t.E(18)+t.C(2C*2C-t.C(22-1N*t.L(18),2),0.5);y=1N*t.E(18)+S;x=1N*t.L(18)-22;V(x===0){1X=y>0?v/2:-v/2}12{1X=t.1s(y/x);V(x<0){V(y>=0){1X+=v}12{1X-=v}}}V(f==1x){1L=f>0?v/2:-v/2}12{1L=t.1s(f/t.C(1x*1x-f*f,0.5))}2Z=22+1x*t.L(1L+18);31=1x*t.E(1L+18);32()}D 2F(){6 a=1W*v/17;6 b=1i+t.L(a)*w;6 c=1j-t.E(a)*w;6 d=(1a-c)/(A-b);6 e=t.1s(d);6 f=A-B*t.L(e);6 g=1a-B*t.E(e);6 i=A-h;6 j=g-t.2M(I*I-t.C(f-i,2));1r=j;1M=1r+H;28=1r+0.1O*H;2a=1M-0.1O*H;6 k=p.q("1r");6 l=p.q("1M");6 m=p.q("28");6 n=p.q("2a");1P(k,i,1r,20);1P(l,i,1M,20);1P(m,i,28,20);1P(n,i,2a,20)}D 1P(l,x,y,a){l.o("N",x);l.o("R",y);l.o("M",x+a);l.o("P",y)}D 3j(){2N(2k);V(1t){1t=2t;p.q("2D").T="开始动画"}z=1Z(p.q("z").Q)-1;1k=1Z(p.q("1k").Q);2z()}D 3M(){V(1t){2N(2k);1t=2t;p.q("2D").T="开始动画"}12{1t=3K;6 a=2q/2j;p.q("2D").T="停止动画";2k=3G(D(){2B(16);16=16+0.1*17/v;19=19-0.1},a)}}D 1Y(){6 a=1m;6 b=1y,Y=1y;6 c,1z,1A,1B,1n,1o,1p,1f;6 d=2j*w/u*a;6 e,3F,1S;6 f=(19-v/2)%(2*v);c=b+d*t.L(f);1z=Y+d*t.E(f);6 g=t.1s(-1/1T);6 h=f-g;2R(h<0){h=h+v/2}2R(h>v/2){h=h-v/2}e=d*t.L(h);1A=b+e*t.L(g);1B=Y+e*t.E(g);1S=e*(B/O);1n=b+1S*t.L(g+v);1o=Y+1S*t.E(g+v);1p=b;1f=1o+(1g-29)/(1b-1h)*(b-1n);$2e.o("x",b);$2e.o("y",Y);$2f.o("x",c);$2f.o("y",1z);$2g.o("x",1A);$2g.o("y",1B);$2h.o("x",1n);$2h.o("y",1o);$2i.o("x",1p);$2i.o("y",1f);$1G.o("N",b);$1G.o("R",Y);$1G.o("M",c);$1G.o("P",1z);$1H.o("N",b);$1H.o("R",Y);$1H.o("M",1A);$1H.o("P",1B);$1I.o("N",c);$1I.o("R",1z);$1I.o("M",1A);$1I.o("P",1B);$1J.o("N",b);$1J.o("R",Y);$1J.o("M",1n);$1J.o("P",1o);$1K.o("N",b);$1K.o("R",Y);$1K.o("M",1p);$1K.o("P",1f);$1E.o("N",1n);$1E.o("R",1o);$1E.o("M",1p);$1E.o("P",1f);$34.Q=e/a;$36.Q=d/a;$37.Q=1S/a;$38.Q=(t.C(t.C(1p-b,2)+t.C(1f-Y,2),0.5))/a;$39.Q=(t.C(t.C(1p-1n,2)+t.C(1f-1o,2),0.5))/a;$3a.Q=(t.C(t.C(c-1A,2)+t.C(1z-1B,2),0.5))/a}D 32(){p.q("3E").Q=w/u;p.q("3D").Q=B/u;p.q("3y").Q=I/u;p.q("3v").Q=h/u;p.q("3u").Q=O/u}D 3t(){V(p.q("2r").T=="隐藏运动简图"){p.q("2r").T="显示运动简图";p.q("3f").1w.1u="2u"}12{p.q("2r").T="隐藏运动简图";p.q("3f").1w.1u="2v"}}D 3s(){V(p.q("2o").T=="隐藏速度图"){p.q("2o").T="显示速度图";p.q("1Y").1w.1u="2u"}12{p.q("2o").T="隐藏速度图";p.q("1Y").1w.1u="2v"}}D 42(){V(p.q("2y").T=="隐藏数据"){p.q("2y").T="显示数据";p.q("3l").1w.1u="2u"}12{p.q("2y").T="隐藏数据";p.q("3l").1w.1u="2v"}}6 2H=G J(1.9,2.4,1.5,1.5,1.5,1.5,1.5,1.8,2.1,1.9,1.7,2.2);6 3b=G J(2q,1c,1l,13,2c,3d,1e,2c,1e,W,1y,3w);6 2K=G J(1c,3x,1y,17,21,13,1l,21,1l,1c,3z,3A);6 33=G J(1,0.8,1.0,0.8,1.0,1.1,1,0.9,1.1,0.3B,0.9,1.0);6 3c=G J(1e,1e,13,1c,W,13,W,W,13,W,3C,2n);6 3e=G J(2p,1d,2p,2P,2x,2p,2x,3H,2x,2P,3I,3J);6 3h=G J(1l,1y,21,1l,2E,1y,2E,21,1c,17,1l,3L);6 3o=G J(3q,3N,3k,2n,3P,2n,3Q,3k,3q,3R,2n,3S);6 3p=G J(1m,2Q,45,2d,1m,26,1m,26,2d,1v,1m,45);6 2I=G J(1m,26,26,1v,1m,1v,1v,1v,2d,2Q,1v,2d);6 2L=G J(1e,1l,1e,2c,W,13,2q,W,13,1c,W,1e);6 2O=G J(3Y,W,3d,1e,W,13,2c,13,1c,1c,13,W);6 2W=G J(0.2S,0.2A,0.2J,0.1O,0.3n,0.1O,0.2S,0.1O,0.2A,0.3n,0.2A,0.2J);6 2Y=G J(0.14,0.3,0.4,0.3,0.25,0.5,0.45,0.2,0.35,0.25,0.4,0.5);6 K,H,U,2s,2w,F,3g,3m,a,b,c,d,2U,2X;6 1W,3i,16,19,43,18,44,1X;6 1U,1Q;6 w,B,I,h,O,S,2Z,31,1L;6 46,47,48,49,4a,4b,4c;6 2j,4d,4e,4f,4g,4h;6 g=9.8,v=3.4i;6 4j,4k,4l,4m,4n,4o,4p,4q,4r,4s,4t,4u,4v,4w,4x;6 A,1a,1i,1j,Z,X,1g,1h,29,1b;6 1r,1M,28,2a;6 1T,4y,4z;6 u=1d;6 z,1k;6 $w=p.q("w");6 $U=p.q("U");6 $B=p.q("B");6 $I=p.q("I");6 $O=p.q("O");6 $2m=p.q("2m");6 $23=p.q("23");6 $1V=p.q("1V");6 $2l=p.q("2l");6 $27=p.q("27");6 $2b=p.q("2b");6 $1F=p.q("1F");6 $24=p.q("24");6 $1R=p.q("1R");6 $1D=p.q("1D");6 $1G=p.q("1G");6 $1H=p.q("1H");6 $1I=p.q("1I");6 $1J=p.q("1J");6 $1K=p.q("1K");6 $1E=p.q("1E");6 $2e=p.q("2e");6 $2f=p.q("2f");6 $2g=p.q("2g");6 $2h=p.q("2h");6 $2i=p.q("2i");6 $38=p.q("4A");6 $37=p.q("4B");6 $34=p.q("4C");6 $36=p.q("4D");6 $3a=p.q("4E");6 $39=p.q("4F");6 2k;6 1t=2t;3j();',62,290,'||||||var||||||||||||||||||setAttribute|document|getElementById|||Math|scale|PI|l1|||fangan|o3_x|l3|pow|function|sin||new||l4|Array||cos|x2|x1|r3|y2|value|y1||innerText|l6|if|130|oA_y|op_y|oA_x|||else|140|||Phi1|180|Phi3_h|Phi1_h|o3_y|oC_y|150|1000|120|c_y|oB_x|oB_y|o2_x|o2_y|weizhi|160|50|b_x|b_y|c_x|cx|jxup|atan|isBeginAni|display|60|style|d_s|200|a2_y|a3_x|a3_y|cy|r3_e|bc|la|pa2|pa3|a2a3|pb|pc|theta3_h|jxdw|l3_s|05|setjxwz|Psi_h|rA|vb|k_l3|Psi|ol1|Phi0|Phi4_h|sudu|parseInt||170|h_s|o3|rC||70|oB|qxup|oC_x|qxdw|oC|110|55|v_p|v_a2|v_a3|v_b|v_c|Omega1|interval|oA|o2|400|btnsd|1200|100|btnjt|Xi|false|none|block|n1|1300|btndt|change_fangan|03|change_jiaodu|l4_s|ani|190|jxwz|change_weizhi|K_a|b_a|02|l6_a|c_a|sqrt|clearInterval|d_a|1400|65|while|04|350|delta|getAttribute|delta_a|JS3|JS3_a|x3||y3|shuju|Xi_a|txt_Va3||txt_Va2|txt_Vb|txt_Vc|txt_Vbc|txt_Va3a2|H_a|n1_a|135|F_a|yundong|G3|G3_a|Phi0_h|set|330|data|G5|06|G5_a|a_a|320|270|hidesudu|hidejiantu|txt_r3|txt_h|220|185|txt_l4|210|230|85|300|txt_l3|txt_l1|vA3A2|setInterval|1100|2000|3000|true|165|animates|360|change_scale|380|410|340|500|rotate|transform|c_s|b_s|l6_s|125|prompt|90|title|hidedata|Phi3|Phi4||r3_d|r3_dd|x3_dd|y3_dd|Vc|x3_d|y3_d|Omega3|Omega4|Alpha3|Alpha4|ac|1416|Fix3|Fiy3|Mi3|Fi5|R34|R45|R65|h65|R12|X63|Y63|R63|Mb|R61|Mb_p|k_l1|k_l4|txt_c|txt_b|txt_a3|txt_a2|txt_a3a2|txt_bc'.split('|'),0,{}))
+	</script>
+</body>
+</html>
