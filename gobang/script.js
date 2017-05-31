@@ -259,20 +259,17 @@ function comAI(){
 			}
 		}
 	}
-	one
+
 	for(var i = 0; i < N; i++){
 		for(var j = 0; j < N; j++){
 			mySumScore += mySorce[i][j];
 			comSumScore += comSorce[i][j];
 		}
 	}
-	console.log("mySorce:" + mySumScore);
-	console.log("comSorce:" + comSumScore);
-	console.log("计算机胜率为："+Math.floor(comSumScore/
-		(mySumScore+comSumScore)*100) + "%");Step(u,v,false);
+	oneStep(u,v,false);
 
 	// console.log(u+":"+v);
-	me = true
+	me = true;
 	chessBoard[u][v] = 2;
 	for(var k = 0; k < count; k++){
 		if(wins[u][v][k]){
@@ -280,7 +277,10 @@ function comAI(){
 			myWin[k] = 6;
 			if(comWin[k] == 5){
 				over = true;
-				alert("computer win!");
+				setTimeout(function() {
+					alert("computer win!");
+				},200);
+				
 			}
 		}
 	}
