@@ -477,15 +477,16 @@
 			a2_y = op_y + vA2 * Math.sin(theta_pa2);
 
 			var theta_pa3 = Math.atan(-1/k_l3);
-			var theta_pa3a2 = theta_pa2 - theta_pa3;
-			// if(theta_pa3a2 > PI / 2){
-			// 	theta_pa3a2 = theta_pa3a2 % (PI/2);
-			// }
-			while(theta_pa3a2<0){
-				theta_pa3a2 = theta_pa3a2 + PI/2;
-			}
-			while(theta_pa3a2>PI/2){
-				theta_pa3a2 = theta_pa3a2 - PI/2;	
+			var theta_pa3a2 = Math.abs(theta_pa2 - theta_pa3) % (PI * 2);
+
+			if(theta_pa3a2 > 1.5*PI){
+				theta_pa3a2 = PI * 2 - theta_pa3a2;
+			}else if(theta_pa3a2>PI && theta_pa3a2 < 1.5 * PI){
+				theta_pa3 = theta_pa3 + PI;
+				theta_pa3a2 = theta_pa3a2 - PI;	
+			}else if(theta_pa3a2 > PI/2 && theta_pa3a2 < PI){
+				theta_pa3 = theta_pa3 + PI;
+				theta_pa3a2 = PI - theta_pa3a2;
 			}
 
 
