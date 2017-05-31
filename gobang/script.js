@@ -216,16 +216,12 @@ function comAI(){
 							comSorce[i][j] += 60;
 						}else if(comWin[k] == 1){
 							comSorce[i][j] += 220;
-							console.log(comSorce[i][j]);
 						}else if(comWin[k] == 2){
 							comSorce[i][j] += 420;
-							console.log(comSorce[i][j]);
 						}else if(comWin[k] == 3){
 							comSorce[i][j] += 2200;
-							console.log(comSorce[i][j]);
 						}else if(comWin[k] == 4){
 							comSorce[i][j] += 20000;
-							console.log(comSorce[i][j]);
 						}
 					}
 				}
