@@ -3,11 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>时间</title>
-	<link rel="stylesheet" type="text/css" href="gobang/style.css">
 </head>
 
 <style>
-    div{
+    div#divTime{
         width: auto;
         font-size: 0pt;
         text-align:center
@@ -21,27 +20,64 @@
         font: 1em sans-serif;
         font-size: 50pt;
     }
+    a{
+        text-decoration:none
+    }
+    div#game{
+        font-size: 20pt;
+        text-align: center;
+    }
+    div#blog{
+        font-size: 20pt;
+        text-align: center;
+    }
+
+    div#game>p{
+        margin: 10px 0 0 0;
+    }
+
+    div#blog>p{
+        margin: 10px 0 0 0;
+    }
+
+    h3.game{
+        margin: 180px 0 0 0;
+    }
+    h3.blog{
+        margin: 20px 0 0 0;
+    }
+
 </style>
 
 <body>
-	<div id="date">
-        <b class="time_show"></b><b>年</b>
-        <b class="time_show"></b><b>月</b>
-        <b class="time_show"></b><b>日</b>
-        
-        <b>&nbsp;星期</b><b id="day" class="time_show"></b>
+    <div id="divTime">
+        <div id="date">
+            <b class="time_show"></b><b>年</b>
+            <b class="time_show"></b><b>月</b>
+            <b class="time_show"></b><b>日</b>
+            
+            <b>&nbsp;星期</b><b id="day" class="time_show"></b>
+        </div>
+        <div id="time">
+            <b class="time_show"></b>
+            <b>:</b>
+            <b class="time_show"></b>
+            <b>:</b>
+            <b class="time_show"></b>
+            <b>.</b>
+            <b class="time_show"></b>
+        </div>
+        <div>
+            <b id="year"></b><b>年已经过去了</b><b id="percent"></b><b>%</b>
+        </div>
     </div>
-    <div id="time">
-        <b class="time_show"></b>
-        <b>:</b>
-        <b class="time_show"></b>
-        <b>:</b>
-        <b class="time_show"></b>
-        <b>.</b>
-        <b class="time_show"></b>
+    <div id="game">
+        <h3 class="game">game</h3>
+        <p><a href="https://HugueLiu.github.io/gobang.html">五子棋</a></p>
     </div>
-    <div>
-        <b id="year"></b><b>年已经过去了</b><b id="percent"></b><b>%</b>
+    <div id="blog">
+        <h3 class="blog">blog</h3>
+        <p><a href="https://HugueLiu.github.io/blog/2018-11-15/ubuntu16.04_recovering_journal.html">blog</a></p>
     </div>
     <script>
         function getweek(day){
