@@ -1,134 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <title>liumh</title>
-    <link rel="icon" type="image/x-icon" href="img/7.ico"/>
-</head>
+---
+layout: page
+description: "Thinking will not overcome fear but action will."
+---
 
-<style>
-    div#divTime{
-        width: auto;
-        font-size: 0pt;
-        text-align:center
-    }
-    #date{
-        margin: 300px 0 0 0;
-    }
-
-    b{
-        color:red;
-        font: 1em sans-serif;
-        font-size: 50pt;
-    }
-    a{
-        text-decoration:none
-    }
-    div#game{
-        font-size: 20pt;
-        text-align: center;
-    }
-    div#blog{
-        font-size: 20pt;
-        text-align: center;
-    }
-
-    div#game>p{
-        margin: 10px 0 0 0;
-    }
-
-    div#blog>p{
-        margin: 10px 0 0 0;
-    }
-
-    h3.game{
-        margin: 180px 0 0 0;
-    }
-    h3.blog{
-        margin: 20px 0 0 0;
-    }
-
-</style>
-
-<body>
-    <div id="divTime">
-        <div id="date">
-            <b class="time_show"></b><b>年</b>
-            <b class="time_show"></b><b>月</b>
-            <b class="time_show"></b><b>日</b>
-            
-            <b>&nbsp;星期</b><b id="day" class="time_show"></b>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
         </div>
-        <div id="time">
-            <b class="time_show"></b>
-            <b>:</b>
-            <b class="time_show"></b>
-            <b>:</b>
-            <b class="time_show"></b>
-            <b>.</b>
-            <b class="time_show"></b>
-        </div>
-        <div>
-            <b id="year"></b><b>年已经过去了</b><b id="percent"></b><b>%</b>
-        </div>
-    </div>
-    <div id="game">
-        <h3 class="game">game</h3>
-        <p><a href="https://HugueLiu.github.io/gobang.html">五子棋</a></p>
-    </div>
-    <div id="blog">
-        <h3 class="blog">blog</h3>
-        <p><a href="https://HugueLiu.github.io/blog_index.html">blog</a></p>
-    </div>
-    <script>
-        function getweek(day){
-            var week;
-            switch(day){
-                case 0: week = "日";break;
-                case 1: week = "一";break;
-                case 2: week = "二";break;
-                case 3: week = "三";break;
-                case 4: week = "四";break;
-                case 5: week = "五";break;
-                case 6: week = "六";break;
-            }
-            return week;
-        };
-        var myDate = new Date();
-        var time_show = document.getElementsByClassName("time_show");
-        var year_show = document.getElementById("year");
-        var percent = document.getElementById("percent");
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
 
-        setInterval(function(){
-            myDate = new Date();
-            var year = myDate.getFullYear();
-            time_show[0].innerText = year;
-            time_show[1].innerText = myDate.getMonth()+1;
-            time_show[2].innerText = myDate.getDate();
-            time_show[3].innerText = getweek(myDate.getDay());
-            time_show[4].innerText = myDate.getHours();
-            time_show[5].innerText = myDate.getMinutes();
-            time_show[6].innerText = myDate.getSeconds();
-            var ms = myDate.getMilliseconds();
-            if(ms < 10){
-                ms = ms + "00";
-            }else if(ms < 100){
-                ms = ms + "0";
-            }
-            time_show[7].innerText = ms;
-
-            year_show.innerText = year;
-            var nowTimeStamp = myDate.valueOf();
-            
-            myDate.setFullYear(year, 0, 1);
-            myDate.setHours(0, 0, 0, 0);
-            var thisYearStamp = myDate.valueOf();
-
-            myDate.setFullYear(year+1, 0, 1);
-            var nextYearStamp = myDate.valueOf();
-
-            percent.innerText =  ((nowTimeStamp - thisYearStamp) * 100 / (nextYearStamp - thisYearStamp)).toFixed(7);
-        },10);
-    </script>
-</body>
-</html>
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>liumh</title>
+    <link rel="icon" type="image/x-icon" href="img/7.ico"/>
+</head>
+
+<style>
+    div#divTime{
+        width: auto;
+        font-size: 0pt;
+        text-align:center
+    }
+    #date{
+        margin: 300px 0 0 0;
+    }
+
+    b{
+        color:red;
+        font: 1em sans-serif;
+        font-size: 50pt;
+    }
+    a{
+        text-decoration:none
+    }
+    div#game{
+        font-size: 20pt;
+        text-align: center;
+    }
+    div#blog{
+        font-size: 20pt;
+        text-align: center;
+    }
+
+    div#game>p{
+        margin: 10px 0 0 0;
+    }
+
+    div#blog>p{
+        margin: 10px 0 0 0;
+    }
+
+    h3.game{
+        margin: 180px 0 0 0;
+    }
+    h3.blog{
+        margin: 20px 0 0 0;
+    }
+
+</style>
+
+<body>
+    <div id="divTime">
+        <div id="date">
+            <b class="time_show"></b><b>年</b>
+            <b class="time_show"></b><b>月</b>
+            <b class="time_show"></b><b>日</b>
+            
+            <b>&nbsp;星期</b><b id="day" class="time_show"></b>
+        </div>
+        <div id="time">
+            <b class="time_show"></b>
+            <b>:</b>
+            <b class="time_show"></b>
+            <b>:</b>
+            <b class="time_show"></b>
+            <b>.</b>
+            <b class="time_show"></b>
+        </div>
+        <div>
+            <b id="year"></b><b>年已经过去了</b><b id="percent"></b><b>%</b>
+        </div>
+    </div>
+    <script>
+        function getweek(day){
+            var week;
+            switch(day){
+                case 0: week = "日";break;
+                case 1: week = "一";break;
+                case 2: week = "二";break;
+                case 3: week = "三";break;
+                case 4: week = "四";break;
+                case 5: week = "五";break;
+                case 6: week = "六";break;
+            }
+            return week;
+        };
+        var myDate = new Date();
+        var time_show = document.getElementsByClassName("time_show");
+        var year_show = document.getElementById("year");
+        var percent = document.getElementById("percent");
+
+        setInterval(function(){
+            myDate = new Date();
+            var year = myDate.getFullYear();
+            time_show[0].innerText = year;
+            time_show[1].innerText = myDate.getMonth()+1;
+            time_show[2].innerText = myDate.getDate();
+            time_show[3].innerText = getweek(myDate.getDay());
+            time_show[4].innerText = myDate.getHours();
+            time_show[5].innerText = myDate.getMinutes();
+            time_show[6].innerText = myDate.getSeconds();
+            var ms = myDate.getMilliseconds();
+            if(ms < 10){
+                ms = ms + "00";
+            }else if(ms < 100){
+                ms = ms + "0";
+            }
+            time_show[7].innerText = ms;
+
+            year_show.innerText = year;
+            var nowTimeStamp = myDate.valueOf();
+            
+            myDate.setFullYear(year, 0, 1);
+            myDate.setHours(0, 0, 0, 0);
+            var thisYearStamp = myDate.valueOf();
+
+            myDate.setFullYear(year+1, 0, 1);
+            var nextYearStamp = myDate.valueOf();
+
+            percent.innerText =  ((nowTimeStamp - thisYearStamp) * 100 / (nextYearStamp - thisYearStamp)).toFixed(7);
+        },10);
+    </script>
+</body>
+</html>
