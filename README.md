@@ -2,4 +2,4 @@
 
 > forked from qiubaiying/qiubaiying.github.io
 
-https://github.com/HugueLiu/HugueLiu3.github.io
+https://hugueliu.github.io/
