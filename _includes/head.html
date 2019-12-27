@@ -50,6 +50,19 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- 数学公式并自动编号 -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                displayMath: [['$$','$$'], ['\[','\]']],
+                inlineMath: [['$','$']],
+            },
+            TeX: {equationNumbers: {autoNumber: "AMS"}},
+        });
+    </script>
+
     <!-- ga & ba script hoook -->
     <script></script>
 </head>
