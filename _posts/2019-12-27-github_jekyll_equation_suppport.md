@@ -43,7 +43,7 @@ TeX: {equationNumbers: {autoNumber: "AMS"}},
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             tex2jax: {
-                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', '\''],
                 displayMath: [['$$','$$'], ['\[','\]']],
                 inlineMath: [['$','$']],
             },
@@ -54,9 +54,13 @@ TeX: {equationNumbers: {autoNumber: "AMS"}},
 
 ## 注意
 
-1. jekyll只有`display`(即以`$$...$$`或`\[...\]`的形式)的公式才能显示行号，并且前后均需要空行。
+1. jekyll只有`display`(即以`\$\$...\$\$`或`\[...\]`的形式)的公式才能显示行号，并且前后均需要空行。
 2. markdown中公式支持见[vscode配置mathjax](http://127.0.0.1:4000/2019/12/16/vscode_mpe_equation_auto_number/)
 
+## 问题
+添加了公式解析后，可能会导致`$[{``{]$`等成对符号解析错误。目前已知问题有：
+1. 代码域`中的成对$会被解析为公式。
+2. 行内公式（$$）内的`\{`无法显示。
 
 ## 参考文章
 

@@ -22,15 +22,15 @@ tags:
 具体方法为:
 
 1. 同步插件
-    ```
+    ```bash{.line-numbers}
     ln -s ~/.vscode/extensions ~/.local/share/code-server
     ```
 2. 同步用户配置
-   ```
+   ```bash{.line-numbers}
     ln -s ~/.config/Code/User ~/.local/share/code-server
    ```
 3.  同步启动时的默认路径
-    ```
+    ```bash{.line-numbers}
     ln -s ~/.config/Code/Backups ~/.local/share/code-server
     ```
 

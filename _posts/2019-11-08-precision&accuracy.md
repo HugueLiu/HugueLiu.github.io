@@ -16,7 +16,7 @@ tags:
 
 区别如下图所示：
 <div align=center>
-<img src="/img/precision_accuracy.jpg">
+<img src="/img/post_precision_accuracy.jpg">
 </div>
 其中，圆心为真值。
 
