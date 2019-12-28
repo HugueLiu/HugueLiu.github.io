@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      为 jekyll 中的代码块添加行号
-distributions:   github基于jekyll搭建的博客中为代码块增加行号，使用
+subtitle:   github基于jekyll搭建的博客中使用prism.js为代码块增加行号
 date:       2019-12-28
 author:     liumh
 header-img: img/home-bg-geek.jpg
