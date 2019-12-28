@@ -18,7 +18,7 @@ tags:
 
 在`_includes/head.html`中添加以下内容：
 
-```javascript{.line-numbers}
+```html{.line-numbers}
 <!-- 数学公式 -->
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <script type="text/x-mathjax-config">
@@ -38,7 +38,7 @@ TeX: {equationNumbers: {autoNumber: "AMS"}},
 ```
 
 最终设置为：
-```javascript{.line-numbers}
+```html{.line-numbers}
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
