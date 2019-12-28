@@ -68,6 +68,12 @@ int main(){
 }
 ```
 
+## 注意
+
+1. 对于没有指定语言的代码块，不显示效果，所以无论如何都要指定语言，随便指定都可以，会被解析成 plaintext。
+2. 在 Github-Pages 对行内（inline）代码也添加样式，但在本地不会这样，可能是 jekyll 的版本问题。
+
+
 ## 参考文章
 
 1. [使用prismjs实现Jekyll代码语法高亮并显示行号](https://blog.csdn.net/u013961139/article/details/78853544)
