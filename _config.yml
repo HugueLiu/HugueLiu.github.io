@@ -3,7 +3,7 @@ title: LIUMH BLOG
 SEOTitle: LIUMH的博客
 header-img: img/post-bg-desk.jpg
 email: 
-description: "Learning to write is learning to think."
+description: "A personal blog website for recording what I think and what I do"
 keyword: "Blog, SLAM, robot"
 url: "http://HugueLiu.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
