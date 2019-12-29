@@ -7,8 +7,7 @@ header-img: img/post-bg-unix-linux.jpg
 catalog: true
 tags:
     - vscode
-    - ubuntu16.04
-    - code-server
+    - linux
 ---
 
 # ubuntu16.04下同步code-server与vscode的配置

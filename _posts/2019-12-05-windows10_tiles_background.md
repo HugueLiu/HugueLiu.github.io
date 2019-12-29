@@ -6,7 +6,7 @@ author:     liumh
 header-img: img/home-bg-geek.jpg
 catalog: true
 tags:
-    - windows10
+    - windows
 ---
 
 # 修改Windows 10中磁贴背景颜色
