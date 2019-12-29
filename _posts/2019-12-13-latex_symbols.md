@@ -8,8 +8,6 @@ header-img: img/home-bg-geek.jpg
 catalog: true
 tags:
     - latex
-    - markdown
-    - mathjax
 ---
 
 # LaTex符号（1）：数学字体

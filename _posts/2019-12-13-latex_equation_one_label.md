@@ -6,9 +6,7 @@ author:     liumh
 header-img: img/home-bg-geek.jpg
 catalog: true
 tags:
-    - markdown
     - latex
-    - mathjax
 ---
 
 # latex（markdown）中多行公式共用一个编号
