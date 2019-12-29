@@ -3,7 +3,7 @@ title: LIUMH BLOG
 SEOTitle: LIUMH的博客
 header-img: img/post-bg-desk.jpg
 email: 
-description: "Every failure is leading towards success."
+description: "Learning to write is learning to think."
 keyword: "Blog, SLAM, robot"
 url: "http://HugueLiu.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -64,12 +64,12 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论
-  clientID: f2c84e7629bb1446c1a4                            #生成的clientID
-  clientSecret: ca6d6139d1e1b8c43f8b2e19492ddcac8b322d0d    #生成的clientSecret
-  repo: qiubaiying.github.io    #仓库名称
-  owner: qiubaiying    #github用户名
-  admin: qiubaiying
+  enable: true    #是否开启Gitalk评论
+  clientID: fd6e18cf22c21a45d699                            #生成的clientID
+  clientSecret: 3dc016413720a103097f5a0520d3e04a67a45de6    #生成的clientSecret
+  repo: HugueLiu.github.io    #仓库名称
+  owner: HugueLiu    #github用户名
+  admin: HugueLiu
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
