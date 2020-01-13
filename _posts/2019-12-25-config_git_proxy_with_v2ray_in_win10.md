@@ -38,9 +38,16 @@ git config --global http.proxy http://127.0.0.1:1081
 git config --global https.proxy https://127.0.0.1:1081
 ```
 
+## 3. 取消代理设置
+
+```bash{.line-numbers}
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
 ## 注意：
 
-1. 在执行`git clone`时，该方法只适用于http方式，不适用于ssh方式。
+1. 在执行`git clone`时，该方法只适用于http方式，不适用于ssh方式。ssh方式推荐使用proxychains(linux)。
 
 
 ## 参考文章：
