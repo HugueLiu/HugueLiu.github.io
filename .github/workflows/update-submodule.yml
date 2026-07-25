@@ -18,8 +18,9 @@ jobs:
         run: |
           cd space-company
           git fetch origin main
+          LATEST=$(git rev-parse origin/main)
           cd ..
-          git submodule update --remote
+          git update-index --cacheinfo 160000,$LATEST,space-company
 
       - name: Commit and push if changed
         run: |
