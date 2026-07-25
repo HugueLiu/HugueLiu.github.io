@@ -1,0 +1,3 @@
+[submodule "space-company"]
+	path = space-company
+	url = https://github.com/HugueLiu/space-company.git
