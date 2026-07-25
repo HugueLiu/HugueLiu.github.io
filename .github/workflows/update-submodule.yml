@@ -1,0 +1,29 @@
+name: Update Submodule
+
+on:
+  repository_dispatch:
+    types: [submodule-updated]
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - run: git submodule update --remote
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add space-company
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update submodule to latest"
+            git push
+          fi

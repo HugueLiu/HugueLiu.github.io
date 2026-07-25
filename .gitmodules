@@ -1,3 +1,4 @@
 [submodule "space-company"]
 	path = space-company
-	url = https://github.com/HugueLiu/space-company.git
+	url = git@github.com:HugueLiu/SpaceCompany.git
+	branch = main
