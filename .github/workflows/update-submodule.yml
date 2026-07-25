@@ -14,7 +14,12 @@ jobs:
           submodules: true
           token: ${{ secrets.PAT_TOKEN }}
 
-      - run: git submodule update --remote
+      - name: Fetch and update submodule
+        run: |
+          cd space-company
+          git fetch origin main
+          cd ..
+          git submodule update --remote
 
       - name: Commit and push if changed
         run: |
