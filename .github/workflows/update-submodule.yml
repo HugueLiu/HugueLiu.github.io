@@ -16,10 +16,7 @@ jobs:
 
       - name: Fetch and update submodule
         run: |
-          cd space-company
-          git fetch origin main
-          LATEST=$(git rev-parse origin/main)
-          cd ..
+          LATEST=$(git ls-remote https://github.com/HugueLiu/SpaceCompany.git refs/heads/main | cut -f1)
           git update-index --cacheinfo 160000,$LATEST,space-company
 
       - name: Commit and push if changed
