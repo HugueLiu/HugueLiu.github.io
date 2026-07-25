@@ -18,6 +18,7 @@ jobs:
         run: |
           cd space-company
           git fetch origin main:main
+          git checkout main
           cd ..
           git add space-company
 
